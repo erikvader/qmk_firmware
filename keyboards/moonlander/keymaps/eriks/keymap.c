@@ -9,9 +9,6 @@
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
-  HSV_174_233_255,
-  HSV_250_63_255,
-  HSV_0_0_255,
   SE_LSPO,
   SE_RSPC,
 };
@@ -73,12 +70,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   // system layer
   [6] = LAYOUT_moonlander(
-    KC_NO,KC_NO,  KC_NO,             KC_NO,  KC_NO,  KC_NO,         KC_NO,         KC_NO, KC_NO,          KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
-    KC_NO,RGB_VAI,RGB_HUI,           RGB_SPI,RGB_SAI,KC_NO,         KC_NO,         KC_NO, HSV_174_233_255,KC_NO,KC_NO,AU_TOG, MU_TOG, MU_MOD,
-    TO(0),RGB_VAD,RGB_HUD,           RGB_SPD,RGB_SAD,KC_NO,         KC_NO,         KC_NO, HSV_250_63_255, KC_NO,KC_NO,KC_NO,  DT_UP,  RESET,
-    KC_NO,RGB_SLD,TOGGLE_LAYER_COLOR,RGB_MOD,RGB_TOG,MOON_LED_LEVEL,                      HSV_0_0_255,    KC_NO,KC_NO,DT_PRNT,DT_DOWN,MAGIC_TOGGLE_NKRO,
-    KC_NO,KC_NO,  KC_NO,             KC_NO,  KC_NO,                 KC_TRNS,       TO(0),                 KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
-    KC_NO,KC_NO,  KC_NO,                                                                                              KC_NO,  KC_NO,  KC_NO
+    KC_NO,KC_NO,  KC_NO,             KC_NO,  KC_NO,  KC_NO,         KC_NO,         KC_NO, KC_NO, KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
+    KC_NO,RGB_VAI,RGB_HUI,           RGB_SPI,RGB_SAI,KC_NO,         KC_NO,         KC_NO, KC_NO, KC_NO,KC_NO,AU_TOG, MU_TOG, MU_MOD,
+    TO(0),RGB_VAD,RGB_HUD,           RGB_SPD,RGB_SAD,KC_NO,         KC_NO,         KC_NO, KC_NO, KC_NO,KC_NO,KC_NO,  DT_UP,  RESET,
+    KC_NO,RGB_SLD,TOGGLE_LAYER_COLOR,RGB_MOD,RGB_TOG,MOON_LED_LEVEL,                      KC_NO, KC_NO,KC_NO,DT_PRNT,DT_DOWN,MAGIC_TOGGLE_NKRO,
+    KC_NO,KC_NO,  KC_NO,             KC_NO,  KC_NO,                 KC_TRNS,       TO(0),        KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
+    KC_NO,KC_NO,  KC_NO,                                                                                     KC_NO,  KC_NO,  KC_NO
   ),
 };
 
@@ -154,33 +151,11 @@ void rgb_matrix_indicators_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-
-    case RGB_SLD:
-        if (record->event.pressed) {
-            rgblight_mode(1);
-        }
-        return false;
-    case HSV_174_233_255:
-        if (record->event.pressed) {
-            rgblight_mode(1);
-            rgblight_sethsv(174,233,255);
-        }
-        return false;
-      case HSV_250_63_255:
-        if (record->event.pressed) {
-            rgblight_mode(1);
-            rgblight_sethsv(250,63,255);
-        }
-        return false;
-      case HSV_0_0_255:
-        if (record->event.pressed) {
-            rgblight_mode(1);
-            rgblight_sethsv(0,0,255);
-        }
-        return false;
+  case RGB_SLD:
+    if (record->event.pressed) {
+      rgblight_mode(1);
     }
+    return false;
+  }
   return true;
 }
-
-
-
