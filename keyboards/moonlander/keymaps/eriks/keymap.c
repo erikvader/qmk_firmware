@@ -64,12 +64,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   // mouse layer
   [5] = LAYOUT_moonlander(
-    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,KC_TRNS,KC_TRNS,    KC_TRNS,KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,          KC_TRNS,
-    KC_TRNS,   KC_MS_BTN2,KC_MS_UP,  KC_MS_BTN1, KC_TRNS,KC_TRNS,KC_TRNS,    KC_TRNS,KC_DELETE,KC_SCROLLLOCK,      KC_PAUSE,           KC_PSCREEN,         KC_AUDIO_VOL_UP,  KC_TRNS,
-    TO(0),     KC_MS_LEFT,KC_MS_DOWN,KC_MS_RIGHT,KC_TRNS,KC_TRNS,KC_TRNS,    KC_TRNS,KC_PGUP,  KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_AUDIO_VOL_DOWN,KC_TRNS,
-    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,KC_TRNS,                    KC_PGDOWN,KC_HOME,            KC_END,             KC_INSERT,          KC_AUDIO_MUTE,    KC_TRNS,
-    KC_TRNS,   KC_TRNS,   KC_TRNS,   TO(0),      TO(0),          KC_NO,      TO(0),            TO(0),              TO(0),              KC_TRNS,            KC_TRNS,          KC_TRNS,
-    KC_MS_BTN3,KC_TRNS,   KC_TRNS,                                                                                                     KC_TRNS,            KC_TRNS,          KC_TRNS
+    KC_TRNS,   KC_TRNS,KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,KC_TRNS,    KC_TRNS,KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,          KC_TRNS,
+    KC_TRNS,   KC_TRNS,KC_MS_BTN2,KC_MS_UP,  KC_MS_BTN1, KC_TRNS,KC_TRNS,    KC_TRNS,KC_DELETE,KC_SCROLLLOCK,      KC_PAUSE,           KC_PSCREEN,         KC_AUDIO_VOL_UP,  KC_TRNS,
+    TO(0),     KC_TRNS,KC_MS_LEFT,KC_MS_DOWN,KC_MS_RIGHT,KC_TRNS,KC_TRNS,    KC_TRNS,KC_PGUP,  KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_AUDIO_VOL_DOWN,KC_TRNS,
+    KC_TRNS,   KC_TRNS,KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,                    KC_PGDOWN,KC_HOME,            KC_END,             KC_INSERT,          KC_AUDIO_MUTE,    KC_TRNS,
+    KC_TRNS,   KC_TRNS,KC_TRNS,   TO(0),     TO(0),              KC_NO,      TO(0),            TO(0),              TO(0),              KC_TRNS,            KC_TRNS,          KC_TRNS,
+    KC_MS_BTN3,KC_TRNS,KC_TRNS,                                                                                                        KC_TRNS,            KC_TRNS,          KC_TRNS
   ),
   // system layer
   [6] = LAYOUT_moonlander(
@@ -103,7 +103,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [2] = { ____, ____, WHITE, ____, ____, ____, RED, ____, ____, ____, ____, ____, HOTPINK, YELLOW, ____, ____, CYAN, HOTPINK, YELLOW, ____, ____, CYAN, HOTPINK, YELLOW, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, BLUE, BLUE, BLUE, ____, ____, MAGENTA, MAGENTA, MAGENTA, ____, ____, MAGENTA, MAGENTA, MAGENTA, ____, ____, MAGENTA, MAGENTA, MAGENTA, CYAN, ____, BLUE, BLUE, BLUE, ____, ____, ____, MAGENTA, ____, ____, WHITE },
     [3] = { ____, CYAN, ____, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, BLUE, ____, ____, ____, ____, GREEN, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, WHITE },
     [4] = { ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, GREEN, ____, ____, ____, ____, BLUE, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, CYAN, ____, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, ____, ____, ____, ____, WHITE },
-    [5] = { ____, ____, WHITE, ____, ____, ____, HOTPINK, HOTPINK, ____, ____, ____, HOTPINK, HOTPINK, ____, ____, ____, HOTPINK, HOTPINK, ____, WHITE, ____, ____, ____, ____, WHITE, ____, ____, ____, ____, ____, ____, ____, HOTPINK, ____, ____, ____, ____, ____, ____, ____, ____, ____, YELLOW, YELLOW, YELLOW, ____, ____, MAGENTA, RED, CYAN, ____, ____, MAGENTA, RED, CYAN, WHITE, ____, MAGENTA, RED, CYAN, WHITE, ____, CYAN, CYAN, CYAN, ____, ____, ____, ____, ____, ____, WHITE },
+    [5] = { ____, ____, WHITE, ____, ____, ____, ____, ____, ____, ____, ____, HOTPINK, HOTPINK, ____, ____, ____, HOTPINK, HOTPINK, ____, WHITE, ____, HOTPINK, HOTPINK, ____, WHITE, ____, ____, ____, ____, ____, ____, ____, HOTPINK, ____, ____, ____, ____, ____, ____, ____, ____, ____, YELLOW, YELLOW, YELLOW, ____, ____, MAGENTA, RED, CYAN, ____, ____, MAGENTA, RED, CYAN, WHITE, ____, MAGENTA, RED, CYAN, WHITE, ____, CYAN, CYAN, CYAN, ____, ____, ____, ____, ____, ____, WHITE },
     [6] = { ____, ____, WHITE, ____, ____, ____, GREEN, GREEN, GREEN, ____, ____, GREEN, GREEN, GREEN, ____, ____, GREEN, GREEN, GREEN, ____, ____, GREEN, GREEN, GREEN, ____, ____, ____, ____, GREEN, ____, ____, ____, ____, ____, ____, BLUE, ____, YELLOW, RED, HOTPINK, ____, ____, YELLOW, CYAN, CYAN, ____, ____, YELLOW, ____, CYAN, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, {172,218,204}, HOTPINK, WHITE, ____, ____, ____, ____, ____, ____, WHITE },
 };
 
