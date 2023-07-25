@@ -6,6 +6,7 @@ enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   SE_LSPO,
   SE_RSPC,
+  TG_SHIFT,
 };
 
 enum tap_dance_codes {
@@ -25,9 +26,7 @@ enum layers {
 #define MOON_LED_LEVEL LED_LEVEL
 
 #define CTL_ESC MT(MOD_LCTL, KC_ESCAPE)
-#define SHT_BSPC MT(MOD_LSFT, KC_BSPACE)
-#define SHT_DEL MT(MOD_LSFT, KC_DELETE)
-#define CAPS_CAP OSM(MOD_LSFT)
+#define OSM_SHFT OSM(MOD_LSFT)
 #define TD_CTLSH TD(TD_CTRL_SHIFT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -35,9 +34,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_PSCREEN,
     KC_TAB,    KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,    KC_TRNS,        KC_TRNS, KC_Y,    KC_U,    KC_I,     KC_O,    KC_P,    KC_BSPACE,
     CTL_ESC,   KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    KC_TRNS,        KC_TRNS, KC_H,    KC_J,    KC_K,     KC_L,    SE_APOS, KC_ENTER,
-    KC_LSHIFT, KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,  SE_MINS, KC_RSHIFT,
+    OSM_SHFT,  KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,  SE_MINS, TG_SHIFT,
     KC_TRNS,   KC_TRNS,  KC_TRNS, TT(_sym),TT(_num),         TG(_sys),       KC_TRNS,          TT(_sym),TT(_num), KC_TRNS, KC_TRNS, KC_TRNS,
-    SHT_BSPC,  TD_CTLSH, KC_LGUI,                                                                                 KC_RGUI, KC_LALT, KC_SPACE
+    KC_BSPACE, TD_CTLSH, KC_LGUI,                                                                                 KC_RGUI, KC_LALT, KC_SPACE
   ),
   [_sym] = LAYOUT_moonlander(
     KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
@@ -45,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO(_bas),  KC_TRNS, SE_AT,   SE_LBRC, SE_RBRC, SE_AMPR, KC_CAPSLOCK,     KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SE_QUES, KC_TRNS,
     KC_TRNS,   KC_TRNS, SE_TILD, SE_LCBR, SE_RCBR, SE_CIRC,                           SE_PLUS, SE_UNDS, SE_LESS, SE_GRTR,  KC_TRNS, KC_TRNS,
     KC_TRNS,   KC_TRNS, KC_TRNS, TG(_sym),TO(_mus),         KC_NO,           TO(_bas),         TG(_sym),KC_NO,   KC_TRNS,  KC_TRNS, KC_TRNS,
-    SHT_DEL,   KC_TRNS, KC_TRNS,                                                                                 KC_TRNS,  KC_TRNS, KC_TRNS
+    KC_DELETE, KC_TRNS, KC_TRNS,                                                                                 KC_TRNS,  KC_TRNS, KC_TRNS
   ),
   [_num] = LAYOUT_moonlander(
     KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -59,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_lmod] = LAYOUT_moonlander(
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,     KC_F6,     KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_NO,   KC_LALT, KC_LGUI, KC_LCTRL, KC_LSHIFT, CAPS_WORD, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_NO,   KC_LALT, KC_LGUI, KC_LCTRL, KC_LSHIFT, KC_NO,     KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_F13,  KC_F14,  KC_F15,  KC_F16,   KC_F17,    KC_F18,                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,              KC_TRNS,      TO(_bas),         KC_TRNS, MO(_num),KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS,                                                                                   KC_TRNS, KC_TRNS, KC_TRNS
@@ -68,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_rmod] = LAYOUT_moonlander(
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_F7,    KC_F8,     KC_F9,    KC_F10,  KC_F11,  KC_F12,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, CAPS_CAP, KC_LSHIFT, KC_LCTRL, KC_LGUI, KC_LALT, KC_NO,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_NO,    KC_LSHIFT, KC_LCTRL, KC_LGUI, KC_LALT, KC_NO,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                             KC_F19,   KC_F20,    KC_F21,   KC_F22,  KC_F23,  KC_F24,
     KC_TRNS, KC_TRNS, KC_TRNS, MO(_sym),KC_TRNS,          KC_TRNS,           TO(_bas),          KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS,                                                                                       KC_TRNS, KC_TRNS, KC_TRNS
@@ -143,6 +142,8 @@ void rgb_matrix_indicators_user(void) {
   }
 }
 
+static bool tg_shift_active = false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case RGB_SLD:
@@ -150,6 +151,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       rgblight_mode(1);
     }
     return false;
+  case TG_SHIFT:
+    if (!record->event.pressed) return false;
+    if (tg_shift_active) {
+      unregister_code(KC_LSHIFT);
+    } else {
+      register_code(KC_LSHIFT);
+    }
+    tg_shift_active = !tg_shift_active;
+    return false;
+  case KC_SPACE:
+  case KC_ENTER:
+    if (tg_shift_active) {
+      tg_shift_active = false;
+      unregister_code(KC_LSHIFT);
+    }
+    return true;
   }
   return true;
 }
