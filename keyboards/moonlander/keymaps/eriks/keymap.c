@@ -11,6 +11,7 @@ enum custom_keycodes {
 
 enum tap_dance_codes {
   TD_CTRL_SHIFT = 0,
+  TD_SUPER_SHIFT,
 };
 
 enum layers {
@@ -28,6 +29,7 @@ enum layers {
 #define CTL_ESC MT(MOD_LCTL, KC_ESCAPE)
 #define OSM_SHFT OSM(MOD_LSFT)
 #define TD_CTLSH TD(TD_CTRL_SHIFT)
+#define TD_SUPSH TD(TD_SUPER_SHIFT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_bas] = LAYOUT_moonlander(
@@ -36,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CTL_ESC,   KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    KC_TRNS,        KC_TRNS, KC_H,    KC_J,    KC_K,     KC_L,    SE_APOS, KC_ENTER,
     OSM_SHFT,  KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,  SE_MINS, TG_SHIFT,
     KC_TRNS,   KC_TRNS,  KC_TRNS, TT(_sym),TT(_num),         TG(_sys),       KC_TRNS,          TT(_sym),TT(_num), KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_BSPACE, TD_CTLSH, KC_LGUI,                                                                                 KC_RGUI, KC_LALT, KC_SPACE
+    KC_BSPACE, TD_CTLSH, TD_SUPSH,                                                                                KC_RGUI, KC_LALT, KC_SPACE
   ),
   [_sym] = LAYOUT_moonlander(
     KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
@@ -190,6 +192,26 @@ void td_ctrl_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
+void td_super_shift_each(qk_tap_dance_state_t *state, void *user_data) {
+  switch (state->count) {
+  case 1:
+    register_code(KC_LGUI);
+    break;
+  case 2:
+    register_code(KC_LSHIFT);
+    break;
+  }
+}
+void td_super_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
+  switch (state->count) {
+  case 2:
+    unregister_code(KC_LSHIFT);
+  case 1:
+    unregister_code(KC_LGUI);
+  }
+}
+
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_CTRL_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(td_ctrl_shift_each, NULL, td_ctrl_shift_reset),
+  [TD_SUPER_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(td_super_shift_each, NULL, td_super_shift_reset),
 };
