@@ -218,12 +218,10 @@ void td_ctrl_shift_each(qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 void td_ctrl_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
-  switch (state->count) {
-  case 2:
+  if (state->count >= 2) {
     unregister_code(KC_LSHIFT);
-  case 1:
-    unregister_code(KC_LCTRL);
   }
+  unregister_code(KC_LCTRL);
 }
 
 void td_super_shift_each(qk_tap_dance_state_t *state, void *user_data) {
@@ -237,12 +235,10 @@ void td_super_shift_each(qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 void td_super_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
-  switch (state->count) {
-  case 2:
+  if (state->count >= 2) {
     unregister_code(KC_LSHIFT);
-  case 1:
-    unregister_code(KC_LGUI);
   }
+  unregister_code(KC_LGUI);
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
