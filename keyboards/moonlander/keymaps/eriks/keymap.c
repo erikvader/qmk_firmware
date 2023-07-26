@@ -121,8 +121,8 @@ void set_layer_color(int layer) {
   for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
     HSV hsv = {
       .h = pgm_read_byte(&ledmap[layer][i][0]),
-        .s = pgm_read_byte(&ledmap[layer][i][1]),
-        .v = pgm_read_byte(&ledmap[layer][i][2]),
+      .s = pgm_read_byte(&ledmap[layer][i][1]),
+      .v = pgm_read_byte(&ledmap[layer][i][2]),
     };
     if (!hsv.h && !hsv.s && !hsv.v) {
       rgb_matrix_set_color( i, 0, 0, 0 );
@@ -146,6 +146,10 @@ void rgb_matrix_indicators_user(void) {
 
 static bool tg_shift_active = false;
 
+void update_tg_shift_led(void) {
+  ML_LED_5(tg_shift_active);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case RGB_SLD:
@@ -161,12 +165,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       register_code(KC_LSHIFT);
     }
     tg_shift_active = !tg_shift_active;
+    update_tg_shift_led();
     return false;
   case KC_SPACE:
   case KC_ENTER:
+  case CTL_ESC:
     if (tg_shift_active) {
       tg_shift_active = false;
       unregister_code(KC_LSHIFT);
+      update_tg_shift_led();
     }
     return true;
   }
