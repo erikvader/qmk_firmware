@@ -197,6 +197,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return process_record_ML(keycode, record) && process_record_toggle_shift(keycode, record);
 }
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+  case TD_CTLSH:
+  case TD_SUPSH:
+    return TAPPING_TERM + 100;
+  default:
+    return TAPPING_TERM;
+  }
+}
+
 void td_ctrl_shift_each(qk_tap_dance_state_t *state, void *user_data) {
   switch (state->count) {
   case 1:
