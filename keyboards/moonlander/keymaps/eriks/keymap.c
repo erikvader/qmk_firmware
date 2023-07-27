@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_sym] = LAYOUT_moonlander(
     KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
     KC_TRNS,   KC_EXLM, SE_DQUO, KC_HASH, SE_DLR,  KC_PERC, KC_TRNS,         KC_TRNS, SE_BSLS, SE_SLSH, SE_LPRN, SE_RPRN,  SE_EQL,  KC_DELETE,
-    TO(_bas),  KC_TRNS, SE_AT,   SE_LBRC, SE_RBRC, SE_AMPR, KC_CAPSLOCK,     KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SE_QUES, KC_TRNS,
+    TO(_bas),  KC_TRNS, SE_AT,   SE_LBRC, SE_RBRC, SE_AMPR, KC_TRNS,         KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SE_QUES, KC_TRNS,
     KC_TRNS,   KC_TRNS, SE_TILD, SE_LCBR, SE_RCBR, SE_CIRC,                           SE_PLUS, SE_UNDS, SE_LESS, SE_GRTR,  KC_TRNS, KC_TRNS,
     KC_TRNS,   KC_TRNS, KC_TRNS, TG(_sym),TO(_mus),         KC_NO,           TO(_bas),         TG(_sym),KC_NO,   KC_TRNS,  KC_TRNS, KC_TRNS,
     KC_TRNS,   KC_TRNS, KC_TRNS,                                                                                 KC_TRNS,  KC_TRNS, KC_TRNS
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_num] = LAYOUT_moonlander(
     KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_NUMLOCK, KC_TRNS, SE_GRV,  SE_ACUT, KC_TRNS, KC_TRNS,        KC_TRNS, SE_SLSH, KC_7,    KC_8,    KC_9,    SE_PLUS, KC_TRNS,
-    TO(_bas),KC_TRNS,    SE_AA,   SE_ADIA, SE_OSLH, KC_TRNS, KC_TRNS,        KC_TRNS, KC_COMMA,KC_4,    KC_5,    KC_6,    SE_ASTR, KC_TRNS,
+    TO(_bas),KC_CAPSLOCK,SE_AA,   SE_ADIA, SE_OSLH, KC_TRNS, KC_TRNS,        KC_TRNS, KC_COMMA,KC_4,    KC_5,    KC_6,    SE_ASTR, KC_TRNS,
     KC_TRNS, KC_TRNS,    SE_PIPE, SE_SECT, SE_MU,   KC_TRNS,                          KC_DOT,  KC_1,    KC_2,    KC_3,    SE_UNDS, KC_TRNS,
     KC_TRNS, KC_TRNS,    KC_TRNS, KC_NO,   TG(_num),         KC_NO,          TO(_bas),         TO(_sys),TG(_num),KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS,    KC_TRNS,                                                                                KC_TRNS, KC_TRNS, KC_0
@@ -100,22 +100,74 @@ void keyboard_post_init_user(void) {
 }
 
 #define ____ {0,0,0}
-#define WHITE {0,0,255}
+#define WHIT {0,0,255}
 #define BLUE {174,233,255}
-#define YELLOW {41,255,255}
-#define HOTPINK {236,150,255}
+#define YELL {41,255,255}
+#define HOTP {236,150,255}
 #define CYAN {131,249,226}
-#define RED {0,255,255}
-#define GREEN {81,255,255}
-#define MAGENTA {216,247,255}
+#define REDD {0,255,255}
+#define GREN {81,255,255}
+#define MAGE {216,247,255}
+#define LAYOUT_moonlander_color( \
+    k00, k01, k02, k03, k04, k05, k06,   k60, k61, k62, k63, k64, k65, k66, \
+    k10, k11, k12, k13, k14, k15, k16,   k70, k71, k72, k73, k74, k75, k76, \
+    k20, k21, k22, k23, k24, k25, k26,   k80, k81, k82, k83, k84, k85, k86, \
+    k30, k31, k32, k33, k34, k35,             k91, k92, k93, k94, k95, k96, \
+    k40, k41, k42, k43, k44,      k53,   kb3,      ka2, ka3, ka4, ka5, ka6, \
+                        k50, k51, k52,   kb4, kb5, kb6 \
+) \
+{ \
+  k00, k10, k20, k30, k40,\
+  k01, k11, k21, k31, k41,\
+  k02, k12, k22, k32, k42,\
+  k03, k13, k23, k33, k43,\
+  k04, k14, k24, k34, k44,\
+  k05, k15, k25, k35,\
+  k06, k16, k26,\
+  k50, k51, k52, k53,\
+  k66, k76, k86, k96, ka6,\
+  k65, k75, k85, k95, ka5,\
+  k64, k74, k84, k94, ka4,\
+  k63, k73, k83, k93, ka3,\
+  k62, k72, k82, k92, ka2,\
+  k61, k71, k81, k91,\
+  k60, k70, k80,\
+  kb6, kb5, kb4, kb3\
+}
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [_sym] = { ____, ____, WHITE, ____, ____, ____, BLUE, ____, ____, ____, ____, BLUE, YELLOW, YELLOW, ____, ____, BLUE, HOTPINK, HOTPINK, ____, ____, BLUE, HOTPINK, HOTPINK, CYAN, ____, BLUE, BLUE, YELLOW, ____, WHITE, RED, ____, ____, ____, ____, ____, GREEN, ____, ____, ____, ____, BLUE, CYAN, ____, ____, ____, BLUE, HOTPINK, YELLOW, ____, ____, BLUE, HOTPINK, YELLOW, ____, ____, BLUE, HOTPINK, YELLOW, ____, ____, BLUE, HOTPINK, YELLOW, ____, ____, ____, ____, ____, ____, WHITE },
-    [_num] = { ____, ____, WHITE, ____, ____, ____, RED, ____, ____, ____, ____, ____, HOTPINK, YELLOW, ____, ____, CYAN, HOTPINK, YELLOW, ____, ____, CYAN, HOTPINK, YELLOW, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, BLUE, BLUE, BLUE, ____, ____, MAGENTA, MAGENTA, MAGENTA, ____, ____, MAGENTA, MAGENTA, MAGENTA, ____, ____, MAGENTA, MAGENTA, MAGENTA, CYAN, ____, BLUE, BLUE, BLUE, ____, ____, ____, MAGENTA, ____, ____, WHITE },
-    [_lmod] = { ____, CYAN, ____, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, BLUE, ____, ____, ____, ____, GREEN, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, WHITE },
-    [_rmod] = { ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, GREEN, ____, ____, ____, ____, BLUE, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, CYAN, ____, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, CYAN, HOTPINK, CYAN, ____, ____, ____, ____, ____, ____, WHITE },
-    [_mus] = { ____, ____, WHITE, ____, ____, ____, ____, ____, ____, ____, ____, HOTPINK, HOTPINK, ____, ____, ____, HOTPINK, HOTPINK, ____, WHITE, ____, HOTPINK, HOTPINK, ____, WHITE, ____, ____, ____, ____, ____, ____, ____, HOTPINK, ____, ____, ____, ____, ____, ____, ____, ____, ____, YELLOW, YELLOW, YELLOW, ____, ____, MAGENTA, RED, CYAN, ____, ____, MAGENTA, RED, CYAN, WHITE, ____, MAGENTA, RED, CYAN, WHITE, ____, CYAN, CYAN, CYAN, ____, ____, ____, ____, ____, ____, WHITE },
-    [_sys] = { ____, ____, WHITE, ____, ____, ____, GREEN, GREEN, GREEN, ____, ____, GREEN, GREEN, GREEN, ____, ____, GREEN, GREEN, GREEN, ____, ____, GREEN, GREEN, GREEN, ____, ____, ____, ____, GREEN, ____, ____, ____, ____, ____, ____, ____, ____, YELLOW, RED, HOTPINK, ____, ____, YELLOW, CYAN, CYAN, ____, ____, YELLOW, ____, CYAN, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, WHITE },
+  [_sym] = LAYOUT_moonlander_color(
+    ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
+    ____, BLUE, BLUE, BLUE, BLUE, BLUE, ____,    ____, BLUE, BLUE, BLUE, BLUE, BLUE, GREN,
+    WHIT, ____, YELL, HOTP, HOTP, BLUE, ____,    ____, HOTP, HOTP, HOTP, HOTP, CYAN, ____,
+    ____, ____, YELL, HOTP, HOTP, YELL,                YELL, YELL, YELL, YELL, ____, ____,
+    ____, ____, ____, WHIT, CYAN,       ____,    WHIT,       WHIT, ____, ____, ____, ____,
+    ____, ____, ____,                                                    ____, ____, ____
+  ),
+  [_num] = LAYOUT_moonlander_color(
+    ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
+    ____, REDD, ____, CYAN, CYAN, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, BLUE, ____,
+    WHIT, REDD, HOTP, HOTP, HOTP, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, BLUE, ____,
+    ____, ____, YELL, YELL, YELL, ____,                BLUE, HOTP, HOTP, HOTP, BLUE, ____,
+    ____, ____, ____, ____, WHIT,       ____,    WHIT,       REDD, WHIT, ____, ____, ____,
+    ____, ____, ____,                                                    ____, ____, ____
+  ),
+  [_mus] = LAYOUT_moonlander_color(
+    ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
+    ____, ____, HOTP, HOTP, HOTP, ____, ____,    ____, CYAN, MAGE, MAGE, MAGE, YELL, ____,
+    WHIT, ____, HOTP, HOTP, HOTP, ____, ____,    ____, CYAN, REDD, REDD, REDD, YELL, ____,
+    ____, ____, ____, ____, ____, ____,                CYAN, CYAN, CYAN, CYAN, YELL, ____,
+    ____, ____, ____, WHIT, WHIT,       ____,    WHIT,       WHIT, WHIT, ____, ____, ____,
+    HOTP, ____, ____,                                                    ____, ____, ____
+  ),
+  [_sys] = LAYOUT_moonlander_color(
+    ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
+    ____, GREN, GREN, GREN, GREN, ____, ____,    ____, ____, ____, ____, YELL, YELL, YELL,
+    WHIT, GREN, GREN, GREN, GREN, ____, ____,    ____, ____, ____, ____, ____, CYAN, REDD,
+    ____, GREN, GREN, GREN, GREN, GREN,                ____, ____, ____, CYAN, CYAN, HOTP,
+    ____, ____, ____, ____, ____,       ____,    WHIT,       ____, ____, ____, ____, ____,
+    ____, ____, ____,                                                    ____, ____, ____
+  ),
 };
 
 void set_layer_color(int layer) {
@@ -138,10 +190,18 @@ void set_layer_color(int layer) {
 void rgb_matrix_indicators_user(void) {
   if (keyboard_config.disable_layer_led) { return; }
   uint8_t layer = biton32(layer_state);
-  if (layer >= _sym && layer <= _sys) {
+  switch (layer) {
+  case _sym:
+  case _num:
+  case _mus:
+  case _sys:
     set_layer_color(layer);
-  } else if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
-    rgb_matrix_set_color_all(0, 0, 0);
+    break;
+  default:
+    if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
+      rgb_matrix_set_color_all(0, 0, 0);
+    }
+    break;
   }
 }
 
