@@ -18,7 +18,7 @@ enum layers {
   _bas = 0,
   _sym,
   _num,
-  _lmod,
+  _gam,
   _rmod,
   _mus,
   _sys,
@@ -38,8 +38,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ALT_TAB,   KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,    KC_TRNS,        KC_TRNS, KC_Y,    KC_U,    KC_I,     KC_O,    KC_P,    KC_BSPACE,
     CTL_ESC,   KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    KC_TRNS,        KC_TRNS, KC_H,    KC_J,    KC_K,     KC_L,    SE_APOS, KC_ENTER,
     OSM_SHFT,  KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,  SE_MINS, TG_SHIFT,
-    KC_TRNS,   KC_TRNS,  KC_TRNS, TT(_sym),TT(_num),         KC_TRNS,        KC_TRNS,          TT(_sym),TT(_num), KC_TRNS, KC_TRNS, KC_TRNS,
-    TD_CTLSH,  TD_SUPSH, KC_TRNS,                          /*^TG(_gaming)^*/                                      KC_TRNS, KC_LALT, KC_SPACE
+    KC_TRNS,   KC_TRNS,  KC_TRNS, TT(_sym),TT(_num),         TG(_gam),       KC_TRNS,          TT(_sym),TT(_num), KC_TRNS, KC_TRNS, KC_TRNS,
+    TD_CTLSH,  TD_SUPSH, KC_TRNS,                                                                                 KC_TRNS, KC_LALT, KC_SPACE
   ),
   [_sym] = LAYOUT_moonlander(
     KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
@@ -57,14 +57,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS,    KC_TRNS, KC_NO,   TG(_num),         KC_NO,          TO(_bas),         TO(_sys),TG(_num),KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS,    KC_TRNS,                                                                                KC_TRNS, KC_TRNS, KC_TRNS
   ),
-  //NOTE: not in use
-  [_lmod] = LAYOUT_moonlander(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,     KC_F6,     KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_NO,   KC_LALT, KC_LGUI, KC_LCTRL, KC_LSHIFT, KC_NO,     KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_F13,  KC_F14,  KC_F15,  KC_F16,   KC_F17,    KC_F18,                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,              KC_TRNS,      TO(_bas),         KC_TRNS, MO(_num),KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,                                                                                   KC_TRNS, KC_TRNS, KC_TRNS
+  [_gam] = LAYOUT_moonlander(
+    KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TAB,   KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_UP,   KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_LCTRL, KC_G,    KC_A,    KC_S,    KC_D,    KC_F,    KC_TRNS,      KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RIGHT,KC_TRNS, KC_TRNS,
+    KC_LSFT,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_RSFT,
+    KC_TRNS,  KC_TRNS, KC_TRNS, KC_ESC,  KC_NO,            KC_TRNS,      TO(_bas),         KC_NO,   KC_NO,   KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_SPACE, KC_LALT, KC_TRNS,                                                                              KC_TRNS, KC_TRNS, KC_TRNS
   ),
   //NOTE: not in use
   [_rmod] = LAYOUT_moonlander(
@@ -72,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_F7,    KC_F8,     KC_F9,    KC_F10,  KC_F11,  KC_F12,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_NO,    KC_LSHIFT, KC_LCTRL, KC_LGUI, KC_LALT, KC_NO,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                             KC_F19,   KC_F20,    KC_F21,   KC_F22,  KC_F23,  KC_F24,
-    KC_TRNS, KC_TRNS, KC_TRNS, MO(_sym),KC_TRNS,          KC_TRNS,           TO(_bas),          KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, MO(_sym),KC_TRNS,          KC_NO,             TO(_bas),          KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS,                                                                                       KC_TRNS, KC_TRNS, KC_TRNS
   ),
   [_mus] = LAYOUT_moonlander(
@@ -203,6 +202,11 @@ void rgb_matrix_indicators_user(void) {
     }
     break;
   }
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  ML_LED_3(IS_LAYER_ON_STATE(state, _gam));
+  return state;
 }
 
 static bool tg_shift_active = false;
