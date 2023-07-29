@@ -44,18 +44,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_sym] = LAYOUT_moonlander(
     KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
     KC_TRNS,   KC_EXLM, SE_DQUO, KC_HASH, SE_DLR,  KC_PERC, KC_TRNS,         KC_TRNS, SE_BSLS, SE_SLSH, SE_LPRN, SE_RPRN,  SE_EQL,  KC_DELETE,
-    TO(_bas),  KC_TRNS, SE_AT,   SE_LBRC, SE_RBRC, SE_AMPR, KC_TRNS,         KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SE_QUES, KC_TRNS,
-    KC_TRNS,   KC_TRNS, SE_TILD, SE_LCBR, SE_RCBR, SE_CIRC,                           SE_PLUS, SE_UNDS, SE_LESS, SE_GRTR,  KC_TRNS, KC_TRNS,
+    TO(_bas),  SE_CIRC, SE_AT,   SE_LBRC, SE_RBRC, SE_AMPR, KC_TRNS,         KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SE_QUES, KC_TRNS,
+    KC_TRNS,   KC_TRNS, SE_PIPE, SE_LCBR, SE_RCBR, KC_TRNS,                           KC_TRNS, SE_PLUS, SE_LESS, SE_GRTR,  KC_TRNS, KC_TRNS,
     KC_TRNS,   KC_TRNS, KC_TRNS, TG(_sym),TO(_mus),         KC_NO,           TO(_bas),         TG(_sym),KC_NO,   KC_TRNS,  KC_TRNS, KC_TRNS,
     KC_TRNS,   KC_TRNS, KC_TRNS,                                                                                 KC_TRNS,  KC_TRNS, KC_TRNS
   ),
   [_num] = LAYOUT_moonlander(
     KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_NUMLOCK, KC_TRNS, SE_GRV,  SE_ACUT, KC_TRNS, KC_TRNS,        KC_TRNS, SE_SLSH, KC_7,    KC_8,    KC_9,    SE_PLUS, KC_TRNS,
-    TO(_bas),KC_CAPSLOCK,SE_AA,   SE_ADIA, SE_OSLH, KC_TRNS, KC_TRNS,        KC_TRNS, KC_COMMA,KC_4,    KC_5,    KC_6,    SE_ASTR, KC_TRNS,
-    KC_TRNS, KC_TRNS,    SE_PIPE, SE_SECT, SE_MU,   KC_TRNS,                          KC_DOT,  KC_1,    KC_2,    KC_3,    SE_UNDS, KC_TRNS,
+    KC_TRNS, KC_NUMLOCK, KC_TRNS, SE_GRV,  SE_ACUT, KC_TRNS, KC_TRNS,        KC_TRNS, SE_ASTR, KC_7,    KC_8,    KC_9,    SE_PLUS, KC_TRNS,
+    TO(_bas),KC_CAPSLOCK,SE_AA,   SE_ADIA, SE_OSLH, KC_TRNS, KC_TRNS,        KC_TRNS, SE_SLSH, KC_4,    KC_5,    KC_6,    SE_MINS, KC_TRNS,
+    KC_TRNS, KC_TRNS,    SE_TILD, SE_SECT, SE_MU,   KC_TRNS,                          KC_DOT,  KC_1,    KC_2,    KC_3,    KC_0,    KC_TRNS,
     KC_TRNS, KC_TRNS,    KC_TRNS, KC_NO,   TG(_num),         KC_NO,          TO(_bas),         TO(_sys),TG(_num),KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS,    KC_TRNS,                                                                                KC_TRNS, KC_TRNS, KC_0
+    KC_TRNS, KC_TRNS,    KC_TRNS,                                                                                KC_TRNS, KC_TRNS, KC_TRNS
   ),
   //NOTE: not in use
   [_lmod] = LAYOUT_moonlander(
@@ -139,8 +139,8 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
   [_sym] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
     ____, BLUE, BLUE, BLUE, BLUE, BLUE, ____,    ____, BLUE, BLUE, BLUE, BLUE, BLUE, GREN,
-    WHIT, ____, YELL, HOTP, HOTP, BLUE, ____,    ____, HOTP, HOTP, HOTP, HOTP, CYAN, ____,
-    ____, ____, YELL, HOTP, HOTP, YELL,                YELL, YELL, YELL, YELL, ____, ____,
+    WHIT, YELL, CYAN, HOTP, HOTP, BLUE, ____,    ____, HOTP, HOTP, HOTP, HOTP, CYAN, ____,
+    ____, ____, CYAN, HOTP, HOTP, ____,                ____, YELL, YELL, YELL, ____, ____,
     ____, ____, ____, WHIT, CYAN,       ____,    WHIT,       WHIT, ____, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
@@ -148,7 +148,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
     ____, REDD, ____, CYAN, CYAN, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, BLUE, ____,
     WHIT, REDD, HOTP, HOTP, HOTP, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, BLUE, ____,
-    ____, ____, YELL, YELL, YELL, ____,                BLUE, HOTP, HOTP, HOTP, BLUE, ____,
+    ____, ____, YELL, YELL, YELL, ____,                BLUE, HOTP, HOTP, HOTP, HOTP, ____,
     ____, ____, ____, ____, WHIT,       ____,    WHIT,       REDD, WHIT, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
