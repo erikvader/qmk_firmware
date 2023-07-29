@@ -12,6 +12,7 @@ enum custom_keycodes {
 enum tap_dance_codes {
   TD_CTRL_SHIFT = 0,
   TD_SUPER_SHIFT,
+  TD_ALT_SHIFT,
 };
 
 enum layers {
@@ -31,6 +32,7 @@ enum layers {
 #define OSM_SHFT OSM(MOD_LSFT)
 #define TD_CTLSH TD(TD_CTRL_SHIFT)
 #define TD_SUPSH TD(TD_SUPER_SHIFT)
+#define TD_ALTSH TD(TD_ALT_SHIFT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_bas] = LAYOUT_moonlander(
@@ -39,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CTL_ESC,   KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    KC_TRNS,        KC_TRNS, KC_H,    KC_J,    KC_K,     KC_L,    SE_APOS, KC_ENTER,
     OSM_SHFT,  KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,  SE_MINS, TG_SHIFT,
     KC_TRNS,   KC_TRNS,  KC_TRNS, TT(_sym),TT(_num),         TG(_gam),       KC_TRNS,          TT(_sym),TT(_num), KC_TRNS, KC_TRNS, KC_TRNS,
-    TD_CTLSH,  TD_SUPSH, KC_TRNS,                                                                                 KC_TRNS, KC_LALT, KC_SPACE
+    TD_CTLSH,  TD_SUPSH, KC_TRNS,                                                                                 KC_TRNS, TD_ALTSH,KC_SPACE
   ),
   [_sym] = LAYOUT_moonlander(
     KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
@@ -265,47 +267,40 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case TD_CTLSH:
   case TD_SUPSH:
+  case TD_ALTSH:
     return TAPPING_TERM + 100;
   default:
     return TAPPING_TERM;
   }
 }
 
-void td_ctrl_shift_each(qk_tap_dance_state_t *state, void *user_data) {
-  switch (state->count) {
-  case 1:
-    register_code(KC_LCTRL);
-    break;
-  case 2:
-    register_code(KC_LSHIFT);
-    break;
+#define MOD_ESC_EACH(name) mod_escalator_##name##_each
+#define MOD_ESC_RESET(name) mod_escalator_##name##_reset
+#define MOD_ESCALATOR(name, one_tap, two_tap)                           \
+  void MOD_ESC_EACH(name) (qk_tap_dance_state_t *state, void *user_data) { \
+    switch (state->count) {                                             \
+    case 1:                                                             \
+      register_code(one_tap);                                           \
+      break;                                                            \
+    case 2:                                                             \
+      register_code(two_tap);                                           \
+      break;                                                            \
+    }                                                                   \
+  }                                                                     \
+  void MOD_ESC_RESET(name) (qk_tap_dance_state_t *state, void *user_data) { \
+    if (state->count >= 2) {                                            \
+      unregister_code(two_tap);                                         \
+    }                                                                   \
+    unregister_code(one_tap);                                           \
   }
-}
-void td_ctrl_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
-  if (state->count >= 2) {
-    unregister_code(KC_LSHIFT);
-  }
-  unregister_code(KC_LCTRL);
-}
+#define MOD_ESC_TD(name) ACTION_TAP_DANCE_FN_ADVANCED(MOD_ESC_EACH(name), NULL, MOD_ESC_RESET(name))
 
-void td_super_shift_each(qk_tap_dance_state_t *state, void *user_data) {
-  switch (state->count) {
-  case 1:
-    register_code(KC_LGUI);
-    break;
-  case 2:
-    register_code(KC_LSHIFT);
-    break;
-  }
-}
-void td_super_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
-  if (state->count >= 2) {
-    unregister_code(KC_LSHIFT);
-  }
-  unregister_code(KC_LGUI);
-}
+MOD_ESCALATOR(TD_CTRL_SHIFT, KC_LCTRL, KC_LSHIFT)
+MOD_ESCALATOR(TD_SUPER_SHIFT, KC_LGUI, KC_LSHIFT)
+MOD_ESCALATOR(TD_ALT_SHIFT, KC_LALT, KC_LSHIFT)
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [TD_CTRL_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(td_ctrl_shift_each, NULL, td_ctrl_shift_reset),
-  [TD_SUPER_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(td_super_shift_each, NULL, td_super_shift_reset),
+  MOD_ESC_TD(TD_CTRL_SHIFT),
+  MOD_ESC_TD(TD_SUPER_SHIFT),
+  MOD_ESC_TD(TD_ALT_SHIFT),
 };
