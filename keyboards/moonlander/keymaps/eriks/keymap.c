@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO(_bas),KC_CAPSLOCK,SE_AA,   SE_ADIA, SE_OSLH, KC_TRNS, KC_TRNS,        KC_TRNS, SE_SLSH, KC_4,    KC_5,    KC_6,    SE_MINS, KC_TRNS,
     KC_TRNS, KC_TRNS,    SE_TILD, SE_SECT, SE_MU,   KC_TRNS,                          KC_DOT,  KC_1,    KC_2,    KC_3,    KC_COMMA,KC_TRNS,
     KC_TRNS, KC_TRNS,    KC_TRNS, KC_NO,   KC_TRNS,          KC_NO,          TO(_bas),         KC_0,    KC_NO,   KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS,    KC_TRNS,                                                                     /*F-layer*/KC_TRNS, KC_TRNS, KC_TRNS
+    KC_TRNS, KC_TRNS,    KC_TRNS,                                                                       KC_TRNS, KC_TRNS, KC_TRNS
   ),
   [_gam] = LAYOUT_moonlander(
     KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -71,7 +71,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_SPACE, KC_LALT, KC_TRNS,                                                                              KC_TRNS, KC_TRNS, KC_TRNS
   ),
   //NOTE: not in use
-  //TODO: make this into an F-button layer?
   [_rmod] = LAYOUT_moonlander(
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_F7,    KC_F8,     KC_F9,    KC_F10,  KC_F11,  KC_F12,
@@ -89,12 +88,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_MS_BTN3,KC_TRNS,KC_TRNS,                                                                                                        KC_TRNS,            KC_TRNS,          KC_TRNS
   ),
   [_sys] = LAYOUT_moonlander(
-    KC_NO,   KC_NO,  KC_NO,             KC_NO,  KC_NO,  KC_NO,         KC_NO,         KC_NO, KC_NO, KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
-    KC_NO,   RGB_VAI,RGB_HUI,           RGB_SPI,RGB_SAI,KC_NO,         KC_NO,         KC_NO, KC_NO, KC_NO,KC_NO,AU_TOG, MU_TOG, MU_MOD,
-    TO(_bas),RGB_VAD,RGB_HUD,           RGB_SPD,RGB_SAD,KC_NO,         KC_NO,         KC_NO, KC_NO, KC_NO,KC_NO,KC_NO,  DT_UP,  RESET,
-    KC_NO,   RGB_SLD,TOGGLE_LAYER_COLOR,RGB_MOD,RGB_TOG,MOON_LED_LEVEL,                      KC_NO, KC_NO,KC_NO,DT_PRNT,DT_DOWN,MAGIC_TOGGLE_NKRO,
-    KC_NO,   KC_NO,  KC_NO,             KC_NO,  KC_NO,                 KC_NO,         TO(_bas),     KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
-    KC_NO,   KC_NO,  KC_NO,                                                                                     KC_NO,  KC_NO,  KC_NO
+    KC_NO,   KC_NO,  KC_NO,             KC_NO,  KC_NO,  KC_NO,         KC_NO,         KC_NO, KC_NO,       KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
+    KC_NO,   RGB_VAI,RGB_HUI,           RGB_SPI,RGB_SAI,KC_NO,         KC_NO,         KC_NO, C(A(KC_F1)), KC_NO,KC_NO,AU_TOG, MU_TOG, MU_MOD,
+    TO(_bas),RGB_VAD,RGB_HUD,           RGB_SPD,RGB_SAD,KC_NO,         KC_NO,         KC_NO, C(A(KC_F2)), KC_NO,KC_NO,KC_NO,  DT_UP,  RESET,
+    KC_NO,   RGB_SLD,TOGGLE_LAYER_COLOR,RGB_MOD,RGB_TOG,MOON_LED_LEVEL,                      C(A(KC_F7)), KC_NO,KC_NO,DT_PRNT,DT_DOWN,MAGIC_TOGGLE_NKRO,
+    KC_NO,   KC_NO,  KC_NO,             KC_NO,  KC_NO,                 KC_NO,         TO(_bas),           KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
+    KC_NO,   KC_NO,  KC_NO,                                                                                           KC_NO,  KC_NO,  KC_NO
   ),
 };
 
@@ -167,9 +166,9 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
   ),
   [_sys] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
-    ____, GREN, GREN, GREN, GREN, ____, ____,    ____, ____, ____, ____, YELL, YELL, YELL,
-    WHIT, GREN, GREN, GREN, GREN, ____, ____,    ____, ____, ____, ____, ____, CYAN, REDD,
-    ____, GREN, GREN, GREN, GREN, GREN,                ____, ____, ____, CYAN, CYAN, HOTP,
+    ____, GREN, GREN, GREN, GREN, ____, ____,    ____, MAGE, ____, ____, YELL, YELL, YELL,
+    WHIT, GREN, GREN, GREN, GREN, ____, ____,    ____, MAGE, ____, ____, ____, CYAN, REDD,
+    ____, GREN, GREN, GREN, GREN, GREN,                MAGE, ____, ____, CYAN, CYAN, HOTP,
     ____, ____, ____, ____, ____,       ____,    WHIT,       ____, ____, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
