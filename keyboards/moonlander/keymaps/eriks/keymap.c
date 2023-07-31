@@ -55,12 +55,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,   KC_TRNS, KC_TRNS,                                                                                 KC_TRNS,  KC_TRNS, KC_TRNS
   ),
   [_num] = LAYOUT_moonlander(
-    KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_NUMLOCK, KC_TRNS, SE_GRV,  SE_ACUT, KC_TRNS, KC_TRNS,        KC_TRNS, SE_ASTR, KC_7,    KC_8,    KC_9,    SE_PLUS, KC_TRNS,
-    TO(_bas),KC_CAPSLOCK,SE_AA,   SE_ADIA, SE_OSLH, KC_TRNS, KC_TRNS,        KC_TRNS, SE_SLSH, KC_4,    KC_5,    KC_6,    SE_MINS, KC_TRNS,
-    KC_TRNS, KC_TRNS,    SE_TILD, SE_SECT, SE_MU,   KC_TRNS,                          KC_DOT,  KC_1,    KC_2,    KC_3,    KC_COMMA,KC_TRNS,
-    KC_TRNS, KC_TRNS,    KC_TRNS, KC_NO,   KC_TRNS,          KC_NO,          TO(_bas),         KC_0,    KC_NO,   KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS,    KC_TRNS,                                                                       KC_TRNS, KC_TRNS, KC_TRNS
+    KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_NUMLOCK, KC_TRNS, SE_GRV,  SE_ACUT, KC_TRNS, KC_TRNS,        KC_TRNS, SE_ASTR, KC_7,    KC_8,      KC_9,    SE_PLUS, KC_TRNS,
+    TO(_bas),KC_CAPSLOCK,SE_AA,   SE_ADIA, SE_OSLH, KC_TRNS, KC_TRNS,        KC_TRNS, SE_SLSH, KC_4,    KC_5,      KC_6,    SE_MINS, KC_TRNS,
+    KC_TRNS, KC_TRNS,    SE_TILD, SE_SECT, SE_MU,   KC_TRNS,                          KC_DOT,  KC_1,    KC_2,      KC_3,    KC_COMMA,KC_TRNS,
+    KC_TRNS, KC_TRNS,    KC_TRNS, KC_NO,   KC_TRNS,          KC_NO,          TO(_bas),         KC_0,    KC_BSPACE, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS,    KC_TRNS,                                                                       KC_TRNS,   KC_TRNS, KC_TRNS
   ),
   [_gam] = LAYOUT_moonlander(
     KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -153,7 +153,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     ____, REDD, ____, CYAN, CYAN, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, BLUE, ____,
     WHIT, REDD, HOTP, HOTP, HOTP, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, BLUE, ____,
     ____, ____, YELL, YELL, YELL, ____,                BLUE, HOTP, HOTP, HOTP, BLUE, ____,
-    ____, ____, ____, ____, WHIT,       ____,    WHIT,       HOTP, ____, ____, ____, ____,
+    ____, ____, ____, ____, WHIT,       ____,    WHIT,       HOTP, GREN, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
   [_mus] = LAYOUT_moonlander_color(
