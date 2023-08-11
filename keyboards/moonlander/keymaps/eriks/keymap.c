@@ -20,7 +20,7 @@ enum layers {
   _sym,
   _num,
   _gam,
-  _rmod,
+  _efs,
   _mus,
   _sys,
 };
@@ -44,22 +44,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CTL_ESC,   KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    KC_TRNS,        KC_TRNS, KC_H,    KC_J,    KC_K,     KC_L,    SE_APOS, SHIFT_ENTER,
     OSM_SHFT,  KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,  SE_MINS, TG_SHIFT,
     KC_TRNS,   KC_TRNS,  KC_TRNS, TD_SUPSH,NUM_BSPC,         KC_TRNS,        KC_TRNS,          SYM_SPC, ALT_TAB,  KC_TRNS, KC_TRNS, KC_TRNS,
-    TG(_gam),  KC_TRNS,  KC_TRNS,                                                                                 KC_TRNS, KC_TRNS, TG(_mus)
+    TG(_gam),  KC_TRNS,  KC_TRNS,                                                                                 KC_TRNS, KC_TRNS, TO(_mus)
   ),
   [_sym] = LAYOUT_moonlander(
-    KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
-    KC_TRNS,   KC_EXLM, SE_DQUO, KC_HASH,   SE_DLR,  KC_PERC, KC_TRNS,         KC_TRNS, SE_BSLS, SE_SLSH, SE_LPRN, SE_RPRN,  SE_EQL,  KC_TRNS,
-    TO(_bas),  SE_CIRC, SE_AT,   SE_LBRC,   SE_RBRC, SE_AMPR, KC_TRNS,         KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SE_QUES, KC_TRNS,
-    KC_TRNS,   KC_TRNS, SE_PIPE, SE_LCBR,   SE_RCBR, KC_TRNS,                           KC_TRNS, SE_PLUS, SE_LESS, SE_GRTR,  KC_TRNS, KC_TRNS,
-    KC_TRNS,   KC_TRNS, KC_TRNS, KC_DELETE, KC_SPACE,         KC_NO,           TO(_bas),         KC_TRNS, KC_NO,   KC_TRNS,  KC_TRNS, KC_TRNS,
-    KC_NO,     KC_TRNS, KC_TRNS,                                                                                   KC_TRNS,  KC_TRNS, KC_NO
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_EXLM, SE_DQUO, KC_HASH,   SE_DLR,  KC_PERC, KC_TRNS,         KC_TRNS, SE_BSLS, SE_SLSH, SE_LPRN, SE_RPRN,  SE_EQL,  KC_TRNS,
+    KC_TRNS, SE_CIRC, SE_AT,   SE_LBRC,   SE_RBRC, SE_AMPR, KC_TRNS,         KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SE_QUES, KC_TRNS,
+    KC_TRNS, KC_TRNS, SE_PIPE, SE_LCBR,   SE_RCBR, KC_TRNS,                           KC_TRNS, SE_PLUS, SE_LESS, SE_GRTR,  KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_DELETE, KC_SPACE,         KC_NO,           TO(_bas),         KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+    KC_NO,   KC_TRNS, KC_TRNS,                                                                                   KC_TRNS,  KC_TRNS, KC_NO
   ),
   [_num] = LAYOUT_moonlander(
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, SE_GRV,  SE_ACUT, KC_TRNS, KC_TRNS,        KC_TRNS, SE_ASTR, KC_7,    KC_8,      KC_9,    SE_PLUS, KC_TRNS,
-    TO(_bas),KC_TRNS, SE_AA,   SE_ADIA, SE_OSLH, KC_TRNS, KC_TRNS,        KC_TRNS, SE_SLSH, KC_4,    KC_5,      KC_6,    SE_MINS, KC_TRNS,
+    KC_TRNS, KC_TRNS, SE_AA,   SE_ADIA, SE_OSLH, KC_TRNS, KC_TRNS,        KC_TRNS, SE_SLSH, KC_4,    KC_5,      KC_6,    SE_MINS, KC_TRNS,
     KC_TRNS, KC_TRNS, SE_TILD, SE_SECT, SE_MU,   KC_TRNS,                          KC_DOT,  KC_1,    KC_2,      KC_3,    KC_COMMA,KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,   KC_TRNS,          KC_NO,          TO(_bas),         KC_0,    KC_BSPACE, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_NO,          TO(_bas),         KC_0,    KC_BSPACE, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_NO,   KC_TRNS, KC_TRNS,                                                                                  KC_TRNS, KC_TRNS, KC_NO
   ),
   [_gam] = LAYOUT_moonlander(
@@ -67,33 +67,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_UP,   KC_TRNS, KC_TRNS, KC_TRNS,
     KC_LCTRL, KC_G,    KC_A,    KC_S,    KC_D,    KC_F,    KC_TRNS,      KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RIGHT,KC_TRNS, KC_TRNS,
     KC_LSFT,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_RSFT,
-    KC_TRNS,  KC_TRNS, KC_TRNS, KC_ESC,  KC_SPACE,         KC_TRNS,      TO(_bas),         KC_SPACE,KC_NO,   KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS,  KC_LALT, KC_TRNS,                                                                              KC_TRNS, KC_TRNS, KC_TRNS
+    KC_TRNS,  KC_TRNS, KC_TRNS, KC_ESC,  KC_SPACE,         KC_TRNS,      TO(_bas),         KC_SPACE,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS,  KC_LALT, KC_TRNS,                                                                              KC_TRNS, KC_TRNS, KC_NO
   ),
-  //NOTE: not in use
-  [_rmod] = LAYOUT_moonlander(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_F7,    KC_F8,     KC_F9,    KC_F10,  KC_F11,  KC_F12,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_NO,    KC_LSHIFT, KC_LCTRL, KC_LGUI, KC_LALT, KC_NO,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                             KC_F19,   KC_F20,    KC_F21,   KC_F22,  KC_F23,  KC_F24,
-    KC_TRNS, KC_TRNS, KC_TRNS, MO(_sym),KC_TRNS,          KC_NO,             TO(_bas),          KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,                                                                                       KC_TRNS, KC_TRNS, KC_TRNS
+  [_efs] = LAYOUT_moonlander(
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_TRNS,    KC_TRNS, KC_F7,    KC_F8,    KC_F9,   KC_F10,  KC_F11,  KC_F12,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,                       KC_F19,   KC_F20,   KC_F21,  KC_F22,  KC_F23,  KC_F24,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TO(_bas),         KC_TRNS,    TO(_bas),          TO(_bas), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_NO,   KC_TRNS, KC_TRNS,                                                                              KC_TRNS, KC_TRNS, TO(_bas)
   ),
   [_mus] = LAYOUT_moonlander(
-    KC_TRNS,   KC_TRNS,KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,KC_TRNS,    KC_TRNS,KC_TRNS,   KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,          KC_TRNS,
-    KC_TRNS,   KC_TRNS,KC_MS_BTN2,KC_MS_UP,  KC_MS_BTN1, KC_TRNS,KC_TRNS,    KC_TRNS,KC_NUMLOCK,KC_SCROLLLOCK,      KC_CAPSLOCK,        KC_PSCREEN,         KC_AUDIO_VOL_UP,  KC_TRNS,
-    TO(_bas),  KC_TRNS,KC_MS_LEFT,KC_MS_DOWN,KC_MS_RIGHT,KC_TRNS,KC_TRNS,    KC_TRNS,KC_PGUP,   KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_AUDIO_VOL_DOWN,KC_TRNS,
-    KC_TRNS,   KC_TRNS,KC_TRNS,   KC_MS_BTN3,KC_TRNS,    KC_TRNS,                    KC_PGDOWN, KC_HOME,            KC_END,             KC_INSERT,          KC_AUDIO_MUTE,    KC_TRNS,
-    KC_TRNS,   KC_TRNS,KC_TRNS,   TO(_bas),  TO(_bas),           KC_NO,      TO(_bas),          TO(_bas),           TO(_bas),           KC_TRNS,            KC_TRNS,          KC_TRNS,
-    TO(_sys),  KC_TRNS,KC_TRNS,                                                                                                         KC_TRNS,            KC_TRNS,          KC_TRNS
+    KC_TRNS,  KC_TRNS,KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,KC_TRNS,    KC_TRNS,KC_TRNS,   KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,          KC_TRNS,
+    KC_TRNS,  KC_TRNS,KC_MS_BTN2,KC_MS_UP,  KC_MS_BTN1, KC_TRNS,KC_TRNS,    KC_TRNS,KC_NUMLOCK,KC_SCROLLLOCK,      KC_CAPSLOCK,        KC_PSCREEN,         KC_AUDIO_VOL_UP,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,KC_MS_LEFT,KC_MS_DOWN,KC_MS_RIGHT,KC_TRNS,KC_TRNS,    KC_TRNS,KC_PGUP,   KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_AUDIO_VOL_DOWN,KC_TRNS,
+    KC_TRNS,  KC_TRNS,KC_TRNS,   KC_MS_BTN3,KC_TRNS,    KC_TRNS,                    KC_PGDOWN, KC_HOME,            KC_END,             KC_INSERT,          KC_AUDIO_MUTE,    KC_TRNS,
+    KC_TRNS,  KC_TRNS,KC_TRNS,   KC_TRNS,   TO(_bas),           KC_NO,      TO(_bas),          TO(_bas),           KC_TRNS,            KC_TRNS,            KC_TRNS,          KC_TRNS,
+    TO(_sys), KC_TRNS,KC_TRNS,                                                                                                         KC_TRNS,            KC_TRNS,          TO(_efs)
   ),
   [_sys] = LAYOUT_moonlander(
-    KC_NO,   KC_NO,  KC_NO,             KC_NO,  KC_NO,  KC_NO,         KC_NO,         KC_NO, KC_NO,       KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
-    KC_NO,   RGB_VAI,RGB_HUI,           RGB_SPI,RGB_SAI,KC_NO,         KC_NO,         KC_NO, C(A(KC_F1)), KC_NO,KC_NO,AU_TOG, MU_TOG, MU_MOD,
-    TO(_bas),RGB_VAD,RGB_HUD,           RGB_SPD,RGB_SAD,KC_NO,         KC_NO,         KC_NO, C(A(KC_F2)), KC_NO,KC_NO,KC_NO,  DT_UP,  RESET,
-    KC_NO,   RGB_SLD,TOGGLE_LAYER_COLOR,RGB_MOD,RGB_TOG,MOON_LED_LEVEL,                      C(A(KC_F7)), KC_NO,KC_NO,DT_PRNT,DT_DOWN,MAGIC_TOGGLE_NKRO,
-    KC_NO,   KC_NO,  KC_NO,             KC_NO,  KC_NO,                 KC_NO,         TO(_bas),           KC_NO,KC_NO,KC_NO,  KC_NO,  KC_NO,
-    KC_NO,   KC_NO,  KC_NO,                                                                                           KC_NO,  KC_NO,  KC_NO
+    KC_NO, KC_NO,  KC_NO,             KC_NO,  KC_NO,  KC_NO,         KC_NO,         KC_NO, KC_NO,       KC_NO,   KC_NO,KC_NO,  KC_NO,  KC_NO,
+    KC_NO, RGB_VAI,RGB_HUI,           RGB_SPI,RGB_SAI,KC_NO,         KC_NO,         KC_NO, C(A(KC_F1)), KC_NO,   KC_NO,AU_TOG, MU_TOG, MU_MOD,
+    KC_NO, RGB_VAD,RGB_HUD,           RGB_SPD,RGB_SAD,KC_NO,         KC_NO,         KC_NO, C(A(KC_F2)), KC_NO,   KC_NO,KC_NO,  DT_UP,  RESET,
+    KC_NO, RGB_SLD,TOGGLE_LAYER_COLOR,RGB_MOD,RGB_TOG,MOON_LED_LEVEL,                      C(A(KC_F7)), KC_NO,   KC_NO,DT_PRNT,DT_DOWN,MAGIC_TOGGLE_NKRO,
+    KC_NO, KC_NO,  KC_NO,             KC_NO,  TO(_bas),              KC_NO,         TO(_bas),           TO(_bas),KC_NO,KC_NO,  KC_NO,  KC_NO,
+    KC_NO, KC_NO,  KC_NO,                                                                                              KC_NO,  KC_NO,  KC_NO
   ),
 };
 
@@ -144,7 +143,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
   [_sym] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
     ____, BLUE, BLUE, BLUE, BLUE, BLUE, ____,    ____, BLUE, BLUE, BLUE, BLUE, BLUE, GREN,
-    WHIT, YELL, CYAN, HOTP, HOTP, BLUE, ____,    ____, HOTP, HOTP, HOTP, HOTP, CYAN, ____,
+    ____, YELL, CYAN, HOTP, HOTP, BLUE, ____,    ____, HOTP, HOTP, HOTP, HOTP, CYAN, ____,
     ____, ____, CYAN, HOTP, HOTP, ____,                ____, YELL, YELL, YELL, ____, ____,
     ____, ____, ____, GREN, YELL,       ____,    WHIT,       WHIT, ____, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
@@ -152,25 +151,33 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
   [_num] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
     ____, ____, ____, CYAN, CYAN, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, BLUE, ____,
-    WHIT, ____, HOTP, HOTP, HOTP, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, BLUE, ____,
+    ____, ____, HOTP, HOTP, HOTP, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, BLUE, ____,
     ____, ____, YELL, YELL, YELL, ____,                BLUE, HOTP, HOTP, HOTP, BLUE, ____,
     ____, ____, ____, ____, WHIT,       ____,    WHIT,       HOTP, GREN, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
+  [_efs] = LAYOUT_moonlander_color(
+    ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
+    CYAN, CYAN, CYAN, CYAN, CYAN, CYAN, ____,    ____, CYAN, CYAN, CYAN, CYAN, CYAN, CYAN,
+    ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
+    CYAN, CYAN, CYAN, CYAN, CYAN, CYAN,                CYAN, CYAN, CYAN, CYAN, CYAN, CYAN,
+    ____, ____, ____, ____, WHIT,       ____,    WHIT,       WHIT, ____, ____, ____, ____,
+    ____, ____, ____,                                                    ____, ____, WHIT
+  ),
   [_mus] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
     ____, ____, HOTP, HOTP, HOTP, ____, ____,    ____, MAGE, MAGE, MAGE, GREN, YELL, ____,
-    WHIT, ____, HOTP, HOTP, HOTP, ____, ____,    ____, CYAN, REDD, REDD, REDD, YELL, ____,
+    ____, ____, HOTP, HOTP, HOTP, ____, ____,    ____, CYAN, REDD, REDD, REDD, YELL, ____,
     ____, ____, ____, HOTP, ____, ____,                CYAN, BLUE, BLUE, GREN, YELL, ____,
-    ____, ____, ____, WHIT, WHIT,       ____,    WHIT,       WHIT, WHIT, ____, ____, ____,
-    REDD, ____, ____,                                                    ____, ____, WHIT
+    ____, ____, ____, ____, WHIT,       ____,    WHIT,       WHIT, ____, ____, ____, ____,
+    REDD, ____, ____,                                                    ____, ____, CYAN
   ),
   [_sys] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
     ____, GREN, GREN, GREN, GREN, ____, ____,    ____, MAGE, ____, ____, YELL, YELL, YELL,
-    WHIT, GREN, GREN, GREN, GREN, ____, ____,    ____, MAGE, ____, ____, ____, CYAN, REDD,
+    ____, GREN, GREN, GREN, GREN, ____, ____,    ____, MAGE, ____, ____, ____, CYAN, REDD,
     ____, GREN, GREN, GREN, GREN, GREN,                MAGE, ____, ____, CYAN, CYAN, HOTP,
-    ____, ____, ____, ____, ____,       ____,    WHIT,       ____, ____, ____, ____, ____,
+    ____, ____, ____, ____, WHIT,       ____,    WHIT,       WHIT, ____, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
 };
@@ -200,6 +207,7 @@ void rgb_matrix_indicators_user(void) {
   case _num:
   case _mus:
   case _sys:
+  case _efs:
     set_layer_color(layer);
     break;
   default:
@@ -241,6 +249,7 @@ static bool process_record_toggle_shift(uint16_t keycode, keyrecord_t *record) {
   case SE_AA:
   case SE_ADIA:
   case SE_OSLH:
+  case NUM_BSPC:
     return true;
   default:
     if (tg_shift_active) {
