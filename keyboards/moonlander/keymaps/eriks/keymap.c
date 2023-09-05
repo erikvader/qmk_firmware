@@ -40,9 +40,9 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_bas] = LAYOUT_moonlander(
     _______,   _______,  _______, _______, _______, _______, _______,        _______, _______, _______, _______,  _______, _______, _______,
-    TG(_mus),  KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,    _______,        _______, KC_Y,    KC_U,    KC_I,     KC_O,    KC_P,    KC_TRNS,
+    TG(_mus),  KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,    _______,        _______, KC_Y,    KC_U,    KC_I,     KC_O,    KC_P,    TG_SHIFT,
     CTL_ESC,   KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    _______,        _______, KC_H,    KC_J,    KC_K,     KC_L,    SE_APOS, SHIFT_ENTER,
-    OSM_SHFT,  KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,  KC_TRNS, TG_SHIFT,
+    OSM_SHFT,  KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,  KC_TRNS, KC_LCTRL,
     _______,   _______,  _______, TD_SUPSH,NUM_BSPC,         KC_TRNS,        KC_TRNS,          SYM_SPC, ALT_TAB,  _______, _______, _______,
     TG(_gam),  _______,  _______,                                                                                 _______, _______, TG(_efs)
   ),
