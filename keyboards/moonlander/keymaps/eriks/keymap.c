@@ -55,12 +55,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   _______, _______,                                                                                   _______,  _______, KC_NO
   ),
   [_num] = LAYOUT_moonlander(
-    _______, _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______, _______,
-    KC_NO,   KC_TRNS, SE_LESS, SE_GRTR, SE_SECT, KC_TRNS, _______,        _______, SE_BSLS, KC_7,    KC_8,    KC_9,    SE_AA,   KC_TRNS,
-    KC_TRNS, KC_TRNS, SE_GRV,  SE_ACUT, SE_TILD, KC_TRNS, _______,        _______, KC_COMMA,KC_4,    KC_5,    KC_6,    SE_ADIA, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, SE_MU,   KC_TRNS,                          KC_DOT,  KC_1,    KC_2,    KC_3,    SE_OSLH, KC_TRNS,
-    _______, _______, _______, KC_TRNS, KC_TRNS,          KC_NO,          TO(_bas),         KC_0,    KC_TRNS, _______, _______, _______,
-    KC_NO,   _______, _______,                                                                                _______, _______, KC_NO
+    _______, _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______,      _______, _______, _______,
+    KC_NO,   KC_TRNS, SE_LESS, SE_GRTR, SE_SECT, KC_TRNS, _______,        _______, SE_BSLS, KC_7,    KC_8,         KC_9,    SE_AA,   KC_TRNS,
+    KC_TRNS, KC_TRNS, SE_GRV,  SE_ACUT, SE_TILD, KC_TRNS, _______,        _______, KC_COMMA,KC_4,    KC_5,         KC_6,    SE_ADIA, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, SE_MU,   KC_TRNS,                          KC_DOT,  KC_1,    KC_2,         KC_3,    SE_OSLH, KC_TRNS,
+    _______, _______, _______, KC_TRNS, KC_TRNS,          KC_NO,          TO(_bas),         KC_0,    LALT(KC_TAB), _______, _______, _______,
+    KC_NO,   _______, _______,                                                                                     _______, _______, KC_NO
   ),
   [_gam] = LAYOUT_moonlander(
     _______,  _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
@@ -153,7 +153,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     ____, ____, HOTP, HOTP, YELL, ____, ____,    ____, GREN, HOTP, HOTP, HOTP, YELL, ____,
     ____, ____, CYAN, CYAN, YELL, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, YELL, ____,
     ____, ____, ____, ____, YELL, ____,                BLUE, HOTP, HOTP, HOTP, YELL, ____,
-    ____, ____, ____, ____, WHIT,       ____,    WHIT,       HOTP, ____, ____, ____, ____,
+    ____, ____, ____, ____, WHIT,       ____,    WHIT,       HOTP, CYAN, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
   [_efs] = LAYOUT_moonlander_color(
