@@ -20,6 +20,7 @@ enum layers {
   _sym,
   _num,
   _gam,
+  _one,
   _efs,
   _mus,
   _sys,
@@ -43,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TG(_mus),  KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,    _______,        _______, KC_Y,    KC_U,    KC_I,     KC_O,    KC_P,    TG_SHIFT,
     CTL_ESC,   KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    _______,        _______, KC_H,    KC_J,    KC_K,     KC_L,    SE_APOS, SHIFT_ENTER,
     OSM_SHFT,  KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,  KC_TRNS, KC_LCTRL,
-    _______,   _______,  _______, TD_SUPSH,NUM_BSPC,         KC_TRNS,        KC_TRNS,          SYM_SPC, ALT_TAB,  _______, _______, _______,
+    _______,   _______,  _______, TD_SUPSH,NUM_BSPC,         TG(_one),       KC_TRNS,          SYM_SPC, ALT_TAB,  _______, _______, _______,
     TG(_gam),  _______,  _______,                                                                                 _______, _______, TG(_efs)
   ),
   [_sym] = LAYOUT_moonlander(
@@ -67,15 +68,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,    _______,      _______, KC_TRNS, KC_TRNS, KC_UP,   KC_TRNS, KC_TRNS, KC_TRNS,
     KC_LCTRL, KC_G,    KC_A,    KC_S,    KC_D,    KC_F,    _______,      _______, KC_TRNS, KC_LEFT, KC_DOWN, KC_RIGHT,KC_TRNS, KC_TRNS,
     KC_LSFT,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_RSFT,
-    _______,  _______, _______, KC_ESC,  KC_SPACE,         KC_TRNS,      TO(_bas),         KC_SPACE,KC_TRNS, _______, _______, _______,
+    _______,  _______, _______, KC_ESC,  KC_SPACE,         KC_NO,        TO(_bas),         KC_SPACE,KC_TRNS, _______, _______, _______,
     KC_TRNS,  _______, _______,                                                                              _______, _______, KC_NO
+  ),
+  [_one] = LAYOUT_moonlander(
+    _______, _______, _______, _______, _______,  _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+    KC_NO,   KC_Q,    KC_F,    KC_UP,   KC_I,     KC_Y,    _______,      _______, _______, _______, _______, _______, _______, _______,
+    KC_TRNS ,KC_NO,   KC_LEFT, KC_DOWN, KC_RIGHT, KC_N,    _______,      _______, _______, _______, _______, _______, _______, _______,
+    KC_LSFT, G(KC_A), G(KC_S), G(KC_D), G(KC_K),  G(KC_J),                        _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, KC_TAB,  KC_SPACE,          KC_TRNS,      TO(_bas),         _______, _______, _______, _______, _______,
+    KC_NO,   _______, _______,                                                                               _______, _______, KC_NO
   ),
   [_efs] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______, _______, _______,    _______, _______,  _______,  _______, _______, _______, _______,
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______,    _______, KC_F7,    KC_F8,    KC_F9,   KC_F10,  KC_F11,  KC_F12,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, _______,    _______, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,                       KC_F19,   KC_F20,   KC_F21,  KC_F22,  KC_F23,  KC_F24,
-    _______, _______, _______, KC_TRNS, TO(_bas),         KC_TRNS,    TO(_bas),          TO(_bas), KC_TRNS, _______, _______, _______,
+    _______, _______, _______, KC_TRNS, TO(_bas),         KC_NO,      TO(_bas),          TO(_bas), KC_TRNS, _______, _______, _______,
     KC_NO,   _______, _______,                                                                              _______, _______, KC_TRNS
   ),
   [_mus] = LAYOUT_moonlander(
@@ -156,6 +165,14 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     ____, ____, ____, ____, WHIT,       ____,    WHIT,       HOTP, CYAN, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
+  [_one] = LAYOUT_moonlander_color(
+    ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
+    ____, HOTP, HOTP, CYAN, HOTP, HOTP, ____,    ____, ____, ____, ____, ____, ____, ____,
+    YELL, ____, CYAN, CYAN, CYAN, HOTP, ____,    ____, ____, ____, ____, ____, ____, ____,
+    BLUE, GREN, GREN, GREN, REDD, REDD,                ____, ____, ____, ____, ____, ____,
+    ____, ____, ____, PINK, YELL,       WHIT,    WHIT,       ____, ____, ____, ____, ____,
+    ____, ____, ____,                                                    ____, ____, ____
+  ),
   [_efs] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
     CYAN, CYAN, CYAN, CYAN, CYAN, CYAN, ____,    ____, CYAN, CYAN, CYAN, CYAN, CYAN, CYAN,
@@ -203,6 +220,7 @@ void rgb_matrix_indicators_user(void) {
   if (keyboard_config.disable_layer_led) { return; }
   uint8_t layer = biton32(layer_state);
   switch (layer) {
+  case _one:
   case _sym:
   case _num:
   case _mus:
