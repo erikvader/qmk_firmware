@@ -73,12 +73,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  KC_NO,   _______,                                                                              KC_NO,   KC_NO,   _______
   ),
   [_one] = LAYOUT_moonlander(
-    _______,  _______, _______, _______, _______,  _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-    KC_ESC,   KC_Q,    KC_F,    KC_UP,   KC_I,     KC_Y,    _______,      _______, _______, _______, _______, _______, _______, _______,
-    KC_D,     KC_O,    KC_LEFT, KC_DOWN, KC_RIGHT, KC_N,    _______,      _______, _______, _______, _______, _______, _______, _______,
-    KC_P,     G(KC_A), G(KC_S), MY_GR,   G(KC_K),  G(KC_J),                        _______, _______, _______, _______, _______, _______,
-    _______,  _______, _______, KC_TAB,  KC_SPACE,          _______,      TO(_bas),         _______, _______, _______, _______, _______,
-    _______,  _______, KC_NO,                                                                                 KC_NO,   KC_NO,   _______
+    _______, _______, _______, _______, _______,  _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+    _______, KC_Q,    KC_F,    KC_UP,   KC_I,     KC_Y,    _______,      _______, _______, _______, _______, _______, _______, _______,
+    _______, KC_O,    KC_LEFT, KC_DOWN, KC_RIGHT, KC_N,    _______,      _______, _______, _______, _______, _______, _______, _______,
+    _______, G(KC_A), G(KC_S), MY_GR,   KC_D,     KC_P,                           _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, KC_TAB,  KC_SPACE,          _______,      TO(_bas),         _______, _______, _______, _______, _______,
+    _______, _______, G(KC_K),                                                                               KC_NO,   KC_NO,   _______
   ),
   [_efs] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______, _______, _______,    _______, _______,  _______,  _______, _______, _______, _______,
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______,    _______, _______,  _______,  _______, _______, _______, _______,
     KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,                       KC_F19,   KC_F20,   KC_F21,  KC_F22,  KC_F23,  KC_F24,
     _______, _______, _______, _______, TO(_bas),         _______,    TO(_bas),          TO(_bas), _______, _______, _______, _______,
-    _______, KC_NO,   KC_NO,                                                                                KC_NO,   KC_NO,   _______
+    _______, KC_NO,   KC_NO,                                                                                _______, KC_NO,   _______
   ),
   [_mus] = LAYOUT_moonlander(
     _______,  _______,_______,   _______,   _______,    _______,_______,    _______,_______,   _______,            _______,            _______,            _______,          _______,
@@ -97,12 +97,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO(_sys), KC_NO,  KC_NO,                                                                                                           KC_NO,              _______,          _______
   ),
   [_sys] = LAYOUT_moonlander(
-    _______, _______, _______,            _______, _______, _______,       _______,     _______, _______,     _______, _______, _______, _______, _______,
-    KC_NO,   RGB_VAI, RGB_HUI,            RGB_SPI, RGB_SAI, KC_NO,         _______,     _______, C(A(KC_F1)), KC_NO,   KC_NO,   AU_TOG,  MU_TOG,  MU_MOD,
-    KC_NO,   RGB_VAD, RGB_HUD,            RGB_SPD, RGB_SAD, KC_NO,         _______,     _______, C(A(KC_F2)), KC_NO,   KC_NO,   KC_NO,   DT_UP,   RESET,
-    KC_NO,   RGB_SLD, TOGGLE_LAYER_COLOR, RGB_MOD, RGB_TOG, MOON_LED_LEVEL,                      C(A(KC_F7)), KC_NO,   KC_NO,   DT_PRNT, DT_DOWN, MAGIC_TOGGLE_NKRO,
-    _______, _______, _______,            KC_NO,   TO(_bas),               _______,     TO(_bas),             TO(_bas),KC_NO,   _______, _______, _______,
-    KC_NO,   KC_NO,   KC_NO,                                                                                                    KC_NO,   KC_NO,   KC_NO
+    _______, _______, _______,            _______, _______, _______,       _______,     _______, _______,     _______, _______,           _______, _______, _______,
+    KC_NO,   RGB_VAI, RGB_HUI,            RGB_SPI, RGB_SAI, KC_NO,         _______,     _______, C(A(KC_F1)), KC_NO,   MU_MOD,            AU_TOG,  MU_TOG,  _______,
+    KC_NO,   RGB_VAD, RGB_HUD,            RGB_SPD, RGB_SAD, KC_NO,         _______,     _______, C(A(KC_F2)), RESET,   KC_NO,             KC_NO,   DT_UP,   _______,
+    KC_NO,   RGB_SLD, TOGGLE_LAYER_COLOR, RGB_MOD, RGB_TOG, MOON_LED_LEVEL,                      C(A(KC_F7)), KC_NO,   MAGIC_TOGGLE_NKRO, DT_PRNT, DT_DOWN, _______,
+    _______, _______, _______,            KC_NO,   TO(_bas),               _______,     TO(_bas),             TO(_bas),KC_NO,   _______,  _______, _______,
+    KC_NO,   KC_NO,   KC_NO,                                                                                                    KC_NO,    KC_NO,   KC_NO
   ),
 };
 
@@ -168,11 +168,11 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
   ),
   [_one] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
-    REDD, HOTP, HOTP, CYAN, HOTP, HOTP, ____,    ____, ____, ____, ____, ____, ____, ____,
-    HOTP, HOTP, CYAN, CYAN, CYAN, HOTP, ____,    ____, ____, ____, ____, ____, ____, ____,
-    HOTP, GREN, GREN, BLUE, REDD, REDD,                ____, ____, ____, ____, ____, ____,
+    ____, HOTP, HOTP, CYAN, HOTP, HOTP, ____,    ____, ____, ____, ____, ____, ____, ____,
+    ____, HOTP, CYAN, CYAN, CYAN, HOTP, ____,    ____, ____, ____, ____, ____, ____, ____,
+    ____, GREN, GREN, BLUE, REDD, REDD,                ____, ____, ____, ____, ____, ____,
     ____, ____, ____, PINK, YELL,       ____,    WHIT,       ____, ____, ____, ____, ____,
-    MAGE, WHIT, ____,                                                    ____, ____, ____
+    MAGE, WHIT, REDD,                                                    ____, ____, ____
   ),
   [_efs] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
@@ -192,9 +192,9 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
   ),
   [_sys] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
-    ____, GREN, GREN, GREN, GREN, ____, ____,    ____, MAGE, ____, ____, YELL, YELL, YELL,
-    ____, GREN, GREN, GREN, GREN, ____, ____,    ____, MAGE, ____, ____, ____, CYAN, REDD,
-    ____, GREN, GREN, GREN, GREN, GREN,                MAGE, ____, ____, CYAN, CYAN, HOTP,
+    ____, GREN, GREN, GREN, GREN, ____, ____,    ____, MAGE, ____, YELL, YELL, YELL, ____,
+    ____, GREN, GREN, GREN, GREN, ____, ____,    ____, MAGE, REDD, ____, ____, CYAN, ____,
+    ____, GREN, GREN, GREN, GREN, GREN,                MAGE, ____, HOTP, CYAN, CYAN, ____,
     ____, ____, ____, ____, WHIT,       ____,    WHIT,       WHIT, ____, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
