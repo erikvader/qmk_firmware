@@ -333,6 +333,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   case TD_CTLSH:
   case TD_SUPSH:
   case TD_ALTSH:
+  case TD_SUPER_SE:
     return TAPPING_TERM + 100;
   default:
     return TAPPING_TERM;
