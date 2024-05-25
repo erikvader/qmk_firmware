@@ -14,17 +14,19 @@ enum tap_dance_codes {
   TD_CTRL_SHIFT = 0,
   TD_SUPER_SHIFT,
   TD_ALT_SHIFT,
+  TD_SUPER_SE,
 };
 
 enum layers {
   _bas = 0,
   _sym,
   _num,
-  _gam,
+  // _gam,
   _one,
   _efs,
   _mus,
   _sys,
+  _se,
 };
 
 #define MOON_LED_LEVEL LED_LEVEL
@@ -36,6 +38,7 @@ enum layers {
 #define NUM_BSPC LT(_num, KC_BSPACE)
 #define SYM_SPC LT(_sym, KC_SPACE)
 #define TD_CTLSH TD(TD_CTRL_SHIFT)
+#define TD_SUPSE TD(TD_SUPER_SE)
 #define TD_SUPSH TD(TD_SUPER_SHIFT)
 #define TD_ALTSH TD(TD_ALT_SHIFT)
 
@@ -45,8 +48,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,    _______,        _______, KC_Y,    KC_U,    KC_I,     KC_O,     KC_P,     _______,
     _______, KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    _______,        _______, KC_H,    KC_J,    KC_K,     KC_L,     SE_MINS,  _______,
     _______, KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,   TG_SHIFT, _______,
-    _______, _______,  _______, TD_SUPSH,NUM_BSPC,         _______,        _______,          SYM_SPC, ALT_TAB,  _______,  _______,  _______,
-    SFT_ESC, TG(_one), TG(_gam),                                                                                TG(_efs), TG(_mus), CTL_ENT
+    _______, _______,  _______, TD_SUPSE,NUM_BSPC,         _______,        _______,          SYM_SPC, ALT_TAB,  _______,  _______,  _______,
+    SFT_ESC, TG(_one), KC_NO,                                                                                  TG(_efs), TG(_mus), CTL_ENT
   ),
   [_sym] = LAYOUT_moonlander(
     _______, _______, _______, _______,   _______, _______, _______,         _______, _______, _______, _______, _______,  _______, _______,
@@ -58,20 +61,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_num] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______,   _______, _______, _______,
-    _______, _______, SE_QUOT, SE_PIPE, SE_SECT, _______, _______,        _______, SE_BSLS, KC_7,    KC_8,      KC_9,    SE_AA,   _______,
-    _______, _______, SE_AT,   SE_AMPR, SE_TILD, _______, _______,        _______, KC_COMMA,KC_4,    KC_5,      KC_6,    SE_ADIA, _______,
-    _______, _______, _______, _______, SE_MU,   _______,                          KC_DOT,  KC_1,    KC_2,      KC_3,    SE_OSLH, _______,
+    _______, _______, SE_QUOT, SE_PIPE, SE_SECT, _______, _______,        _______, SE_BSLS, KC_7,    KC_8,      KC_9,    _______, _______,
+    _______, _______, SE_AT,   SE_AMPR, SE_TILD, _______, _______,        _______, KC_COMMA,KC_4,    KC_5,      KC_6,    _______, _______,
+    _______, _______, _______, _______, SE_MU,   _______,                          KC_DOT,  KC_1,    KC_2,      KC_3,    _______, _______,
     _______, _______, _______, _______, _______,          _______,        TO(_bas),         KC_0,    A(KC_TAB), _______, _______, _______,
     _______, KC_NO,   KC_NO,                                                                                    KC_NO,   KC_NO,   C(KC_SPACE)
   ),
-  [_gam] = LAYOUT_moonlander(
-    _______,  _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-    KC_TAB,   KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,    _______,      _______, _______, _______, KC_UP,   _______, _______, _______,
-    KC_LCTRL, KC_G,    KC_A,    KC_S,    KC_D,    KC_F,    _______,      _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT,_______, _______,
-    KC_LSFT,  _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, KC_RSFT,
-    _______,  _______, _______, KC_ESC,  KC_SPACE,         _______,      TO(_bas),         KC_SPACE,_______, _______, _______, _______,
-    _______,  KC_NO,   _______,                                                                              KC_NO,   KC_NO,   _______
+  [_se] = LAYOUT_moonlander(
+    _______, _______, _______, _______, _______, _______, _______,        _______, _______, _______,  _______,    _______,    _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,        _______, _______, _______,  SE_QUOT,    SE_DQUO,    _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,        _______, _______, SE_AA,    SE_ADIA,    SE_OSLH,    _______, _______,
+    _______, _______, _______, _______, _______, _______,                          _______, S(SE_AA), S(SE_ADIA), S(SE_OSLH), _______, _______,
+    _______, _______, _______, TG(_se), _______,          _______,        TO(_bas),         _______,  _______,    _______,    _______, _______,
+    _______, KC_NO,   KC_NO,                                                                                      KC_NO,      KC_NO,   _______
   ),
+  // [_gam] = LAYOUT_moonlander(
+  //   _______,  _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+  //   KC_TAB,   KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,    _______,      _______, _______, _______, KC_UP,   _______, _______, _______,
+  //   KC_LCTRL, KC_G,    KC_A,    KC_S,    KC_D,    KC_F,    _______,      _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT,_______, _______,
+  //   KC_LSFT,  _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, KC_RSFT,
+  //   _______,  _______, _______, KC_ESC,  KC_SPACE,         _______,      TO(_bas),         KC_SPACE,_______, _______, _______, _______,
+  //   _______,  KC_NO,   _______,                                                                              KC_NO,   KC_NO,   _______
+  // ),
   [_one] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______,  _______, _______,      _______, _______, _______, _______, _______, _______, _______,
     _______, KC_Q,    KC_F,    KC_UP,   KC_I,     KC_Y,    _______,      _______, _______, _______, _______, _______, _______, _______,
@@ -160,9 +171,9 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
   ),
   [_num] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
-    ____, ____, HOTP, CYAN, YELL, ____, ____,    ____, GREN, HOTP, HOTP, HOTP, YELL, ____,
-    ____, ____, GREN, CYAN, YELL, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, YELL, ____,
-    ____, ____, ____, ____, YELL, ____,                BLUE, HOTP, HOTP, HOTP, YELL, ____,
+    ____, ____, HOTP, CYAN, YELL, ____, ____,    ____, GREN, HOTP, HOTP, HOTP, ____, ____,
+    ____, ____, GREN, CYAN, YELL, ____, ____,    ____, BLUE, HOTP, HOTP, HOTP, ____, ____,
+    ____, ____, ____, ____, YELL, ____,                BLUE, HOTP, HOTP, HOTP, ____, ____,
     ____, ____, ____, ____, WHIT,       ____,    WHIT,       HOTP, CYAN, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, CYAN
   ),
@@ -238,7 +249,7 @@ void rgb_matrix_indicators_user(void) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  ML_LED_3(IS_LAYER_ON_STATE(state, _gam));
+  ML_LED_3(IS_LAYER_ON_STATE(state, _se));
   return state;
 }
 
@@ -353,8 +364,48 @@ MOD_ESCALATOR(TD_CTRL_SHIFT, KC_LCTRL, KC_LSHIFT)
 MOD_ESCALATOR(TD_SUPER_SHIFT, KC_LGUI, KC_LSHIFT)
 MOD_ESCALATOR(TD_ALT_SHIFT, KC_LALT, KC_LSHIFT)
 
+static int super_se_state = 0;
+
+void super_se_finished(qk_tap_dance_state_t *state, void *user_data) {
+  super_se_state = 0;
+  switch (state->count) {
+  case 1:
+    if (state->pressed) {
+      register_code(KC_LGUI);
+      super_se_state = 1;
+    } else {
+      set_oneshot_layer(_se, ONESHOT_START);
+      super_se_state = 2;
+    }
+    break;
+  case 2:
+    if (state->pressed) {
+      register_code(KC_LGUI);
+      register_code(KC_LSHIFT);
+      super_se_state = 3;
+    }
+    break;
+  }
+}
+
+void super_se_reset(qk_tap_dance_state_t *state, void *user_data) {
+  switch (super_se_state) {
+  case 1:
+    unregister_code(KC_LGUI);
+    break;
+  case 2:
+    clear_oneshot_layer_state(ONESHOT_PRESSED);
+    break;
+  case 3:
+    unregister_code(KC_LGUI);
+    unregister_code(KC_LSHIFT);
+    break;
+  }
+}
+
 qk_tap_dance_action_t tap_dance_actions[] = {
-  MOD_ESC_TD(TD_CTRL_SHIFT),
-  MOD_ESC_TD(TD_SUPER_SHIFT),
-  MOD_ESC_TD(TD_ALT_SHIFT),
+  [TD_CTRL_SHIFT] = MOD_ESC_TD(TD_CTRL_SHIFT),
+  [TD_SUPER_SHIFT] = MOD_ESC_TD(TD_SUPER_SHIFT),
+  [TD_ALT_SHIFT] = MOD_ESC_TD(TD_ALT_SHIFT),
+  [TD_SUPER_SE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, super_se_finished, super_se_reset),
 };
