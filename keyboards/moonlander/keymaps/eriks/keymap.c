@@ -54,8 +54,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_sym] = LAYOUT_moonlander(
     _______, _______, _______, _______,   _______, _______, _______,         _______, _______, _______, _______, _______,  _______, _______,
     _______, KC_EXLM, SE_DQUO, KC_HASH,   SE_DLR,  KC_PERC, _______,         _______, SE_BSLS, SE_SLSH, SE_LPRN, SE_RPRN,  SE_EQL,  _______,
-    _______, SE_CIRC, SE_LBRC, SE_RBRC,   SE_GRV,  SE_ACUT, _______,         _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SE_QUES, _______,
-    _______, _______, SE_LCBR, SE_RCBR,   SE_LESS, SE_GRTR,                           _______, SE_PLUS, SE_ASTR, _______,  _______, _______,
+    _______, SE_CIRC, SE_GRV,  SE_LBRC,   SE_LCBR, SE_LESS, _______,         _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SE_QUES, _______,
+    _______, _______, SE_ACUT, SE_RBRC,   SE_RCBR, SE_GRTR,                           _______, SE_PLUS, SE_ASTR, _______,  _______, _______,
     _______, _______, _______, KC_DELETE, KC_SPACE,         _______,         TO(_bas),         _______, _______, _______,  _______, _______,
     _______, KC_NO,   KC_NO,                                                                                     KC_NO,    KC_NO,   _______
   ),
@@ -164,8 +164,8 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
   [_sym] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
     ____, BLUE, BLUE, BLUE, BLUE, BLUE, ____,    ____, BLUE, BLUE, BLUE, BLUE, BLUE, ____,
-    ____, YELL, HOTP, HOTP, YELL, YELL, ____,    ____, HOTP, HOTP, HOTP, HOTP, CYAN, ____,
-    ____, ____, CYAN, CYAN, REDD, REDD,                ____, YELL, YELL, ____, ____, ____,
+    ____, YELL, CYAN, HOTP, REDD, YELL, ____,    ____, HOTP, HOTP, HOTP, HOTP, CYAN, ____,
+    ____, ____, CYAN, HOTP, REDD, YELL,                ____, YELL, YELL, ____, ____, ____,
     ____, ____, ____, GREN, YELL,       ____,    WHIT,       WHIT, ____, ____, ____, ____,
     ____, ____, ____,                                                    ____, ____, ____
   ),
