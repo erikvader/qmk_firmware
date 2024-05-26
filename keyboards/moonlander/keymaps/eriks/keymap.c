@@ -21,9 +21,8 @@ enum layers {
   _bas = 0,
   _sym,
   _num,
-  // _gam,
+  _gam,
   _one,
-  _efs,
   _mus,
   _sys,
   _se,
@@ -49,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    _______,        _______, KC_H,    KC_J,    KC_K,     KC_L,     SE_MINS,  _______,
     _______, KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,    KC_COMMA, KC_DOT,   TG_SHIFT, _______,
     _______, _______,  _______, TD_SUPSE,NUM_BSPC,         _______,        _______,          SYM_SPC, ALT_TAB,  _______,  _______,  _______,
-    SFT_ESC, TG(_one), KC_NO,                                                                                  TG(_efs), TG(_mus), CTL_ENT
+    SFT_ESC, TG(_one), TG(_gam),                                                                                KC_NO,    TG(_mus), CTL_ENT
   ),
   [_sym] = LAYOUT_moonlander(
     _______, _______, _______, _______,   _______, _______, _______,         _______, _______, _______, _______, _______,  _______, _______,
@@ -69,20 +68,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_se] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______, _______, _______,        _______, _______, _______,  _______,    _______,    _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,        _______, _______, _______,  SE_QUOT,    SE_DQUO,    _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,        _______, _______, SE_AA,    SE_ADIA,    SE_OSLH,    _______, _______,
-    _______, _______, _______, _______, _______, _______,                          _______, S(SE_AA), S(SE_ADIA), S(SE_OSLH), _______, _______,
+    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,        _______, _______, SE_DLR,   SE_QUOT,    SE_DQUO,    _______, _______,
+    _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,        _______, _______, SE_AA,    SE_ADIA,    SE_OSLH,    _______, _______,
+    _______, KC_F11,  KC_F12,  _______, _______, _______,                          _______, S(SE_AA), S(SE_ADIA), S(SE_OSLH), _______, _______,
     _______, _______, _______, TG(_se), _______,          _______,        TO(_bas),         _______,  _______,    _______,    _______, _______,
     _______, KC_NO,   KC_NO,                                                                                      KC_NO,      KC_NO,   _______
   ),
-  // [_gam] = LAYOUT_moonlander(
-  //   _______,  _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-  //   KC_TAB,   KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,    _______,      _______, _______, _______, KC_UP,   _______, _______, _______,
-  //   KC_LCTRL, KC_G,    KC_A,    KC_S,    KC_D,    KC_F,    _______,      _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT,_______, _______,
-  //   KC_LSFT,  _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, KC_RSFT,
-  //   _______,  _______, _______, KC_ESC,  KC_SPACE,         _______,      TO(_bas),         KC_SPACE,_______, _______, _______, _______,
-  //   _______,  KC_NO,   _______,                                                                              KC_NO,   KC_NO,   _______
-  // ),
+  [_gam] = LAYOUT_moonlander(
+    _______,  _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+    KC_TAB,   KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,    _______,      _______, _______, _______, KC_UP,   _______, _______, _______,
+    KC_LCTRL, KC_G,    KC_A,    KC_S,    KC_D,    KC_F,    _______,      _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT,_______, _______,
+    KC_LSFT,  _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, KC_RSFT,
+    _______,  _______, _______, KC_ESC,  KC_SPACE,         _______,      TO(_bas),         KC_SPACE,_______, _______, _______, _______,
+    _______,  KC_NO,   _______,                                                                              KC_NO,   KC_NO,   _______
+  ),
   [_one] = LAYOUT_moonlander(
     _______, _______, _______, _______, _______,  _______, _______,      _______, _______, _______, _______, _______, _______, _______,
     _______, KC_Q,    KC_F,    KC_UP,   KC_I,     KC_Y,    _______,      _______, _______, _______, _______, _______, _______, _______,
@@ -90,14 +89,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, G(KC_A), G(KC_S), MY_GR,   KC_D,     KC_P,                           _______, _______, _______, _______, _______, _______,
     _______, _______, _______, KC_TAB,  KC_SPACE,          _______,      TO(_bas),         _______, _______, _______, _______, _______,
     _______, _______, G(KC_K),                                                                               KC_NO,   KC_NO,   _______
-  ),
-  [_efs] = LAYOUT_moonlander(
-    _______, _______, _______, _______, _______, _______, _______,    _______, _______,  _______,  _______, _______, _______, _______,
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______,    _______, KC_F7,    KC_F8,    KC_F9,   KC_F10,  KC_F11,  KC_F12,
-    _______, _______, _______, _______, _______, _______, _______,    _______, _______,  _______,  _______, _______, _______, _______,
-    KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,                       KC_F19,   KC_F20,   KC_F21,  KC_F22,  KC_F23,  KC_F24,
-    _______, _______, _______, _______, TO(_bas),         _______,    TO(_bas),          TO(_bas), _______, _______, _______, _______,
-    _______, KC_NO,   KC_NO,                                                                                _______, KC_NO,   _______
   ),
   [_mus] = LAYOUT_moonlander(
     _______,  _______,_______,   _______,   _______,    _______,_______,    _______,_______,   _______,            _______,            _______,            _______,          _______,
@@ -185,13 +176,13 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     ____, ____, ____, PINK, YELL,       ____,    WHIT,       ____, ____, ____, ____, ____,
     MAGE, WHIT, REDD,                                                    ____, ____, ____
   ),
-  [_efs] = LAYOUT_moonlander_color(
+  [_se] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
-    CYAN, CYAN, CYAN, CYAN, CYAN, CYAN, ____,    ____, CYAN, CYAN, CYAN, CYAN, CYAN, CYAN,
-    ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
-    CYAN, CYAN, CYAN, CYAN, CYAN, CYAN,                CYAN, CYAN, CYAN, CYAN, CYAN, CYAN,
-    ____, ____, ____, ____, WHIT,       ____,    WHIT,       WHIT, ____, ____, ____, ____,
-    ____, ____, ____,                                                    WHIT, ____, ____
+    ____, CYAN, CYAN, CYAN, CYAN, CYAN, ____,    ____, ____, BLUE, YELL, BLUE, ____, ____,
+    ____, CYAN, CYAN, CYAN, CYAN, CYAN, ____,    ____, ____, YELL, YELL, YELL, ____, ____,
+    ____, CYAN, CYAN, ____, ____, ____,                ____, BLUE, YELL, BLUE, ____, ____,
+    ____, ____, ____, WHIT, ____,       ____,    WHIT,       ____, ____, ____, ____, ____,
+    ____, ____, ____,                                                    ____, ____, ____
   ),
   [_mus] = LAYOUT_moonlander_color(
     ____, ____, ____, ____, ____, ____, ____,    ____, ____, ____, ____, ____, ____, ____,
@@ -237,7 +228,7 @@ void rgb_matrix_indicators_user(void) {
   case _num:
   case _mus:
   case _sys:
-  case _efs:
+  case _se:
     set_layer_color(layer);
     break;
   default:
@@ -249,7 +240,7 @@ void rgb_matrix_indicators_user(void) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  ML_LED_3(IS_LAYER_ON_STATE(state, _se));
+  ML_LED_3(IS_LAYER_ON_STATE(state, _gam));
   return state;
 }
 
@@ -330,10 +321,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+  case TD_SUPER_SE:
+    return TAPPING_TERM + 200;
   case TD_CTLSH:
   case TD_SUPSH:
   case TD_ALTSH:
-  case TD_SUPER_SE:
     return TAPPING_TERM + 100;
   default:
     return TAPPING_TERM;
