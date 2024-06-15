@@ -321,8 +321,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-  case TD_SUPER_SE:
-    return TAPPING_TERM + 200;
+  case TD_SUPSE:
   case TD_CTLSH:
   case TD_SUPSH:
   case TD_ALTSH:
